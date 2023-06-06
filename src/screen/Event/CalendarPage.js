@@ -12,9 +12,11 @@ import {Calendar} from 'react-native-calendars';
 import PushNotification from 'react-native-push-notification';
 import notifee from '@notifee/react-native';
 import messaging from '@react-native-firebase/messaging';
+import AgendaComponent from '../../components/AgendaComponent';
+
 
 const CalendarPage = props => {
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState('2023-06-10');
   const [selectedDay, setSelectedDay] = useState('');
   const [savedEvent, setSavedEvent] = useState([]);
 
@@ -111,7 +113,11 @@ const CalendarPage = props => {
   };
 
   return (
-    <View style={styles.container}>
+    <>
+ 
+<AgendaComponent selectedDate={selectedDate}/>
+
+    {/* <View style={styles.container}>
       <Text style={styles.heading}>Calendario</Text>
 
       <View>
@@ -132,8 +138,9 @@ const CalendarPage = props => {
           <Text style={styles.buttonText}>Imposta Promemoria</Text>
         </TouchableOpacity>
       </View>
-    </View>
-  );
+    </View> */}
+</>
+  )
 };
 
 const styles = StyleSheet.create({
