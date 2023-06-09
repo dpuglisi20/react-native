@@ -41,6 +41,12 @@ const HomeScreen = () => {
     };
 
   //KPI 
+  const onMaintenancePressed = () => {
+    navigation.navigate('Maintenance');
+  };
+
+
+  //KPI 
   const onKpiPressed = () => {
     navigation.navigate('DeviceData');
   };
@@ -101,7 +107,7 @@ const HomeScreen = () => {
         
         <TouchableOpacity
           style={styles.button}
-          onPress={() => handleButtonPress('Pulsante 6')}
+          onPress={onMaintenancePressed}
         >
           <Text style={styles.buttonText}>MAINTENANCE</Text>
         </TouchableOpacity>

@@ -22,6 +22,7 @@ import CalendarPage from '../screen/Event/CalendarPage';
 import CameraDevices from '../screen/Webcam/CameraDevices';
 import CameraStatus from '../screen/Webcam/CameraStatus';
 import DeviceData from '../screen/Kpi/DeviceData';
+import Maintenance from '../screen/Maintenance/Maintenance';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,7 @@ const Navigation = () => {
       <Stack.Screen name='CameraDevices' component={CameraDevices}/>
       <Stack.Screen name='CameraStatus' component={CameraStatus}/>
       <Stack.Screen name='DeviceData' component={DeviceData}/>
+      <Stack.Screen name='Maintenance' component={Maintenance}/>
       
       </Stack.Navigator>
     </NavigationContainer>

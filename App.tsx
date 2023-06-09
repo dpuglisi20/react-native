@@ -13,7 +13,10 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Navigation from './src/navigation';
+import { GlobalProvider } from './src/screen/Maintenance/GlobalState';
+import Maintenance from './src/screen/Maintenance/Maintenance';
 
 const newColorTheme = {
   brand: {
@@ -27,10 +30,13 @@ const theme = extendTheme({ colors: newColorTheme });
 function App(): JSX.Element {
   return (
     <NativeBaseProvider theme={theme}>
-    <SafeAreaView style={styles.root}>
+    <SafeAreaProvider style={styles.root}>
+      <GlobalProvider>
+{/*    <Maintenance  /> */}
+   <Navigation />
+   </GlobalProvider>
    
-      <Navigation />
-    </SafeAreaView>
+    </SafeAreaProvider>
     </NativeBaseProvider>
   );
 }
