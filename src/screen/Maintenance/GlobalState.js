@@ -4,7 +4,7 @@ export const GlobalContext = createContext({});
 
 export const GlobalProvider = props => {
   const [taskList, setTaskList] = useState([]);
-  const [isPermitted, setIsPermitted] = useState();
+
   //actions
   const addTask = task => {
     setTaskList([...taskList, task]);
@@ -28,11 +28,10 @@ export const GlobalProvider = props => {
     addTask,
     removeTask,
     updateTask,
-    isPermitted,
   };
   return (
     <GlobalContext.Provider value={contextValue}>
- {props.children}
+      {props.children}
     </GlobalContext.Provider>
   );
 };

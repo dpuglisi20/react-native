@@ -8,13 +8,9 @@ import {
   VStack,
   Center,
   Heading,
-  FormControl,
-  Input,
-  Button,
   Box,
 } from 'native-base';
 
-import {styles} from './styles';
 import {FormModal, TaskCard} from '../../components';
 import {GlobalContext} from '../../screen/Maintenance/GlobalState';
 
@@ -28,7 +24,7 @@ const TaskList = () => {
 
   const [isVisibleModal, setIsVisibleModal] = useState(false);
 
-  const {addTask, updateTask, removeTask, taskList, isPermitted} =
+  const {addTask, updateTask, taskList} =
     useContext(GlobalContext);
 
   const iconBg = colorMode === 'dark' ? '#E3F2F9' : '#003F5E';
@@ -50,15 +46,11 @@ const TaskList = () => {
   };
   const handleCompletedItem = item => {
     const newStatus = !item.completed;
-    //const taskId = task.id;
     const updatedItem = {...item, completed: newStatus};
     updateTask(updatedItem);
     if (newStatus) {
       setIsVisibleModal(true);
-      //handleDeleteTask(item.id)
-    }
-    //handleDeleteTask(taskId);
-    
+    }  
   };
   const handleTaskCardPressed = item => {
     setIsUpdating(true);
@@ -66,7 +58,6 @@ const TaskList = () => {
 
     setModal(true);
   };
-
 
   return (
     <Center w="100%">
@@ -79,7 +70,7 @@ const TaskList = () => {
           _dark={{
             color: 'warmGray.50',
           }}>
-          Daily Task
+     DAILY TASK
         </Heading>
         <Heading
           mt="1"
@@ -101,7 +92,6 @@ const TaskList = () => {
             onPress={() => setModal(true)}
           />
 
-          {/*  DOVREBBE SCORRERE MA A ME NON LO FA */}
           <FlatList
             data={taskList}
             keyExtractor={item => item.id}
@@ -114,7 +104,7 @@ const TaskList = () => {
                 setModal={setModal}
                 handleCompletedItem={handleCompletedItem}
                 handleTaskCardPressed={handleTaskCardPressed}
-               // handleDeleteTask={handleDeleteTask}
+                // handleDeleteTask={handleDeleteTask}
                 handleCloseModal={handleCloseModal}
               />
             )}

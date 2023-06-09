@@ -1,5 +1,5 @@
-import {View, Text} from 'react-native';
-import React, {useContext, useState} from 'react';
+import { Text} from 'react-native';
+import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {GlobalContext} from '../../screen/Maintenance/GlobalState';
 import {
   Checkbox,
@@ -13,49 +13,79 @@ import {
   Input,
   Button,
 } from 'native-base';
-
-const initialState = {id: null, text: '', completed: false};
-
+import {DocumentPicker} from 'react-native-document-picker';
+const initialState = {
+  id: null,
+  text: '',
+  completed: false,
+};
 const TaskCard = props => {
-  const {addTask, updateTask, removeTask, taskList, isPermitted} =
+  const { updateTask, removeTask} =
     useContext(GlobalContext);
   const {colorMode} = useColorMode();
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [task, setTask] = useState(initialState);
+  const [textNote, setTextNote] = useState('');
+  const [signature, setSignature] = useState('');
   const bgColor = colorMode === 'dark' ? 'primary.800' : 'primary.200';
-  const {
-    item,
-
-    handleTaskCardPressed,
-  
-    handleCloseModal,
-  } = props;
-
+  const {item, handleTaskCardPressed} = props;
+  const [buttonDisable, setButtonDisable] = useState(false);
+  useEffect(() => {
+    if (textNote.length > 0 && signature.length > 0) {
+      setButtonDisable(true);
+    } else {
+      setButtonDisable(false);
+    }
+  }, [textNote, signature]);
   const handleCompletedItem = item => {
     const newStatus = !item.completed;
-    //const taskId = task.id;
-    const updatedItem = {...item, completed: newStatus};
+    const updatedItem = {
+      ...item,
+      completed: newStatus,
+    };
     updateTask(updatedItem);
-
     if (newStatus) {
       setIsVisibleModal(true);
-      //handleDeleteTask(item.id)
     }
-
-    //handleDeleteTask(taskId);
-   
   };
-  const handleCloseModalCheck = () => {
+  const handleCloseModalCheck = item => {
+    const newStatus = item.completed;
+    console.log(newStatus);
+    if (newStatus) {
+      const updatedItem = {
+        ...item,
+        completed: false,
+      };
+      updateTask(updatedItem);
+      setIsVisibleModal(true);
+      //console.log(item);
+    } else {
+    }
     setIsVisibleModal(false);
     setTask(initialState);
   };
-
   const handleDeleteTask = id => {
     console.log(id);
     removeTask(id);
-    handleCloseModalCheck();
+    setIsVisibleModal(false);
   };
-
+  const handletextNote = event => {
+    setTextNote(event);
+  };
+  const handleSignature = event => {
+    setSignature(event);
+  };
+  const [fileResponse, setFileResponse] = useState([]);
+  const handleDocumentSelection = useCallback(async () => {
+    try {
+      const response = await DocumentPicker.pick({
+        presentationStyle: 'fullScreen',
+      });
+      setFileResponse(response);
+    } catch (err) {
+      console.warn(err);
+    }
+  }, []);
   return (
     <>
       <Pressable onPress={() => handleTaskCardPressed(item)}>
@@ -89,22 +119,38 @@ const TaskCard = props => {
         </HStack>
       </Pressable>
 
-      <Modal isOpen={isVisibleModal} onClose={handleCloseModalCheck} size="lg">
+      <Modal
+        isOpen={isVisibleModal}
+        onClose={() => handleCloseModalCheck(item)}
+        size="lg">
         <Modal.Content maxWidth="400px">
           <Modal.CloseButton />
           <Modal.Header>Are you sure you completed the task?</Modal.Header>
           <Modal.Body>
             <FormControl>
               <FormControl.Label>Note</FormControl.Label>
-              <Input />
-            </FormControl>
-            <FormControl mt="3">
+              <Input value={textNote} onChangeText={handletextNote} />
+
+              <FormControl.Label>Document</FormControl.Label>
+              {fileResponse.map((file, index) => (
+                <Text
+                  key={index.toString()}
+                  style={styles.uri}
+                  numberOfLines={1}
+                  ellipsizeMode={'middle'}>
+                  {file?.uri}
+                </Text>
+              ))}
+              <Button onPress={handleDocumentSelection}>Select</Button>
               <FormControl.Label>Signature</FormControl.Label>
-              <Input />
+              <Input value={signature} onChangeText={handleSignature} />
             </FormControl>
           </Modal.Body>
           <Modal.Footer>
-            <Button flex={1} onPress={() => handleDeleteTask(item.id)}>
+            <Button
+              disabled={!buttonDisable}
+              flex={1}
+              onPress={() => handleDeleteTask(item.id)}>
               Save
             </Button>
           </Modal.Footer>
@@ -113,5 +159,4 @@ const TaskCard = props => {
     </>
   );
 };
-
 export default TaskCard;

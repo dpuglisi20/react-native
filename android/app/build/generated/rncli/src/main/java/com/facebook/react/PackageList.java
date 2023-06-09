@@ -21,6 +21,8 @@ import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
 import io.invertase.firebase.messaging.ReactNativeFirebaseMessagingPackage;
 // @react-native-picker/picker
 import com.reactnativecommunity.picker.RNCPickerPackage;
+// react-native-document-picker
+import com.reactnativedocumentpicker.RNDocumentPickerPackage;
 // react-native-push-notification
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 // react-native-safe-area-context
@@ -83,6 +85,7 @@ public class PackageList {
       new ReactNativeFirebaseAuthPackage(),
       new ReactNativeFirebaseMessagingPackage(),
       new RNCPickerPackage(),
+      new RNDocumentPickerPackage(),
       new ReactNativePushNotificationPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
