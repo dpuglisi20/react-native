@@ -37,32 +37,28 @@ const TaskList = () => {
     setModal(false);
     setTask(initialState);
   };
-  const handleCloseModalCheck = () => {   
-    setIsVisibleModal(false);
-    setTask(initialState);
-  };
+
   const handleTask = inputValue => {
     const taskId = task.id ? task.id : Date.now();
     setTask({id: taskId, text: inputValue, completed: false});
   };
   const handleAddTask = () => {
-    addTask(task);
+    isUpdating ? updateTask(task) : addTask(task);
     handleCloseModal();
     //console.log(task);
-    //setIsUpdating(false);
+    setIsUpdating(false);
   };
   const handleCompletedItem = item => {
     const newStatus = !item.completed;
     //const taskId = task.id;
     const updatedItem = {...item, completed: newStatus};
-    
-    if(newStatus){
+    updateTask(updatedItem);
+    if (newStatus) {
       setIsVisibleModal(true);
       //handleDeleteTask(item.id)
     }
-    
     //handleDeleteTask(taskId);
-    updateTask(updatedItem);
+    
   };
   const handleTaskCardPressed = item => {
     setIsUpdating(true);
@@ -70,17 +66,8 @@ const TaskList = () => {
 
     setModal(true);
   };
-  const handleDeleteTask = id => {
 
-    removeTask(id);
 
-  };
-
-  const handleSaluta = id => {
-   
-    console.log(id);
-    handleCloseModalCheck();
-  };
   return (
     <Center w="100%">
       <Box safeArea p="2" py="30" w="90%" maxW="300">
@@ -125,12 +112,10 @@ const TaskList = () => {
                 item={item}
                 setTask={setTask}
                 setModal={setModal}
-              
                 handleCompletedItem={handleCompletedItem}
                 handleTaskCardPressed={handleTaskCardPressed}
-                handleDeleteTask={handleDeleteTask}
+               // handleDeleteTask={handleDeleteTask}
                 handleCloseModal={handleCloseModal}
-        
               />
             )}
           />
@@ -142,31 +127,6 @@ const TaskList = () => {
               handleAddTask={handleAddTask}
             />
           </Modal>
-
-
-          <Modal isOpen={isVisibleModal} onClose={handleCloseModalCheck} size="lg">
-          <Modal.Content maxWidth="400px">
-          <Modal.CloseButton />
-          <Modal.Header>Are you sure you completed the task?</Modal.Header>
-          <Modal.Body>
-            <FormControl>
-              <FormControl.Label>Note</FormControl.Label>
-              <Input />
-            </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>Signature</FormControl.Label>
-              <Input />
-            </FormControl>
-          </Modal.Body>
-          <Modal.Footer>
-          <Button flex={1}  onPress={() => handleSaluta(task.id)}>
-          Save
-        </Button>
-          </Modal.Footer>
-        </Modal.Content>
-        </Modal>
-
-
         </VStack>
       </Box>
     </Center>
