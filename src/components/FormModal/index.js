@@ -1,41 +1,37 @@
-import React , {useState}from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button, FormControl, Input, Modal} from 'native-base';
+import { Text } from 'react-native-svg';
 
 const FormModal = props => {
-  const {task, handleTask, handleAddTask, isPermitted} = props;
-  const [errors, setErrors] = useState({});
-  
-  const validate = () => {
-    console.log(isPermitted);
-    if (task.text === undefined) {
-      setErrors({ ...errors,
-        name: 'Task is required'
-      });
-      console.log('task non aggiunto');
-      return false;
-    } else if (task.text.length < 1) {
-      setErrors({ ...errors,
-        name: 'Task is too short'
-      });
-      console.log('task non aggiunto');
-      return  false;
+  const {task, handleTask, handleAddTask,add} = props;
+  const [buttonDisable, setButtonDisable] = useState(false);
+
+  const [color, setColor] = useState('red');
+
+  useEffect(() => {
+    if (task.text.length > 0) {
+      setButtonDisable(true);
+      setColor('indigo')
+    } else {
+      setColor('red')
+      setButtonDisable(false);
     }
-    
-    console.log('task aggiunto');
-  }
+  }, [task.text]);
 
   return (
     <Modal.Content>
       <Modal.CloseButton />
-      <Modal.Header>Task for Today?</Modal.Header>
+      {add ?  <Modal.Header>Task for Today?</Modal.Header> :  <Modal.Header>Update Task</Modal.Header>}
+     
       <Modal.Body>
-        <FormControl isRequired>
-          <Input  value={task.text} onChangeText={handleTask} />
+        <FormControl>
+       
+          <Input value={task.text} onChangeText={handleTask} />
         </FormControl>
       </Modal.Body>
       <Modal.Footer>
-        <Button flex={1} onPress={handleAddTask}>
-          Done
+        <Button colorScheme={color} disabled={!buttonDisable} flex={1} onPress={handleAddTask}>
+        {add ?  'Add Task' :  'Update Task'}
         </Button>
       </Modal.Footer>
     </Modal.Content>

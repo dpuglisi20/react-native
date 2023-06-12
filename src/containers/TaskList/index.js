@@ -19,21 +19,22 @@ const initialState = {id: null, text: '', completed: false};
 const TaskList = () => {
   const [modal, setModal] = useState(false);
   const [task, setTask] = useState(initialState);
-  const {colorMode} = useColorMode();
   const [isUpdating, setIsUpdating] = useState(false);
+  const[add,setAdd] = useState(true);
 
   const [isVisibleModal, setIsVisibleModal] = useState(false);
 
-  const {addTask, updateTask, taskList} =
-    useContext(GlobalContext);
-
-  const iconBg = colorMode === 'dark' ? '#E3F2F9' : '#003F5E';
+  const {addTask, updateTask, taskList} = useContext(GlobalContext);
 
   const handleCloseModal = () => {
     setModal(false);
     setTask(initialState);
   };
 
+  const handleOpenModal = () => {
+    setAdd(true);
+    setModal(true);
+  };
   const handleTask = inputValue => {
     const taskId = task.id ? task.id : Date.now();
     setTask({id: taskId, text: inputValue, completed: false});
@@ -41,7 +42,6 @@ const TaskList = () => {
   const handleAddTask = () => {
     isUpdating ? updateTask(task) : addTask(task);
     handleCloseModal();
-    //console.log(task);
     setIsUpdating(false);
   };
   const handleCompletedItem = item => {
@@ -50,13 +50,15 @@ const TaskList = () => {
     updateTask(updatedItem);
     if (newStatus) {
       setIsVisibleModal(true);
-    }  
+    }
   };
   const handleTaskCardPressed = item => {
     setIsUpdating(true);
     setTask(item);
+    setAdd(false);
 
     setModal(true);
+   
   };
 
   return (
@@ -70,7 +72,7 @@ const TaskList = () => {
           _dark={{
             color: 'warmGray.50',
           }}>
-     DAILY TASK
+          DAILY TASK
         </Heading>
         <Heading
           mt="1"
@@ -84,12 +86,12 @@ const TaskList = () => {
         </Heading>
         <VStack space={3} mt="5">
           <IconButton
+            colorScheme="indigo"
             rounded="full"
             size="md"
-            bg={iconBg}
             variant="solid"
             icon={<AddIcon />}
-            onPress={() => setModal(true)}
+            onPress={() => handleOpenModal()}
           />
 
           <FlatList
@@ -104,7 +106,6 @@ const TaskList = () => {
                 setModal={setModal}
                 handleCompletedItem={handleCompletedItem}
                 handleTaskCardPressed={handleTaskCardPressed}
-                // handleDeleteTask={handleDeleteTask}
                 handleCloseModal={handleCloseModal}
               />
             )}
@@ -113,6 +114,7 @@ const TaskList = () => {
           <Modal isOpen={modal} onClose={handleCloseModal} size="lg">
             <FormModal
               task={task}
+              add={add}
               handleTask={handleTask}
               handleAddTask={handleAddTask}
             />

@@ -1,4 +1,4 @@
-import { Text} from 'react-native';
+import {Text} from 'react-native';
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {GlobalContext} from '../../screen/Maintenance/GlobalState';
 import {
@@ -13,6 +13,7 @@ import {
   Input,
   Button,
 } from 'native-base';
+
 import {DocumentPicker} from 'react-native-document-picker';
 const initialState = {
   id: null,
@@ -20,61 +21,72 @@ const initialState = {
   completed: false,
 };
 const TaskCard = props => {
-  const { updateTask, removeTask} =
-    useContext(GlobalContext);
+  const {updateTask, removeTask} = useContext(GlobalContext);
   const {colorMode} = useColorMode();
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [task, setTask] = useState(initialState);
   const [textNote, setTextNote] = useState('');
   const [signature, setSignature] = useState('');
+  const [color, setColor] = useState('red');
   const bgColor = colorMode === 'dark' ? 'primary.800' : 'primary.200';
   const {item, handleTaskCardPressed} = props;
   const [buttonDisable, setButtonDisable] = useState(false);
+
   useEffect(() => {
     if (textNote.length > 0 && signature.length > 0) {
       setButtonDisable(true);
+      setColor('indigo')
     } else {
       setButtonDisable(false);
     }
   }, [textNote, signature]);
+
   const handleCompletedItem = item => {
     const newStatus = !item.completed;
     const updatedItem = {
       ...item,
       completed: newStatus,
     };
-    updateTask(updatedItem);
+    //updateTask(updatedItem);
     if (newStatus) {
       setIsVisibleModal(true);
     }
   };
+
   const handleCloseModalCheck = item => {
     const newStatus = item.completed;
-    console.log(newStatus);
+  
     if (newStatus) {
       const updatedItem = {
         ...item,
         completed: false,
       };
-      updateTask(updatedItem);
+   
+      //updateTask(updatedItem);
       setIsVisibleModal(true);
-      //console.log(item);
+      
     } else {
+      console.log(item)
     }
     setIsVisibleModal(false);
     setTask(initialState);
   };
+
   const handleDeleteTask = id => {
-    console.log(id);
+   
     removeTask(id);
     setIsVisibleModal(false);
+     console.log('Task n.' , id, ' completed: [note]= ', textNote ,'; [signature]= ', signature);
   };
+
   const handletextNote = event => {
     setTextNote(event);
   };
+
   const handleSignature = event => {
     setSignature(event);
   };
+
   const [fileResponse, setFileResponse] = useState([]);
   const handleDocumentSelection = useCallback(async () => {
     try {
@@ -93,8 +105,8 @@ const TaskCard = props => {
           flexWrap={'wrap'}
           py={5}
           rounded="xl"
-          bg={bgColor}
           px={5}
+          bg={bgColor}
           mb={4}
           justifyContent="space-between"
           alignItems="center">
@@ -148,6 +160,7 @@ const TaskCard = props => {
           </Modal.Body>
           <Modal.Footer>
             <Button
+            colorScheme={color}
               disabled={!buttonDisable}
               flex={1}
               onPress={() => handleDeleteTask(item.id)}>
