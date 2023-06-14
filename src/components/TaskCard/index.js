@@ -35,7 +35,7 @@ const TaskCard = props => {
   useEffect(() => {
     if (textNote.length > 0 && signature.length > 0) {
       setButtonDisable(true);
-      setColor('indigo')
+      setColor('indigo');
     } else {
       setButtonDisable(false);
     }
@@ -55,28 +55,37 @@ const TaskCard = props => {
 
   const handleCloseModalCheck = item => {
     const newStatus = item.completed;
-  
+
     if (newStatus) {
       const updatedItem = {
         ...item,
         completed: false,
       };
-   
+
       //updateTask(updatedItem);
       setIsVisibleModal(true);
-      
     } else {
-      console.log(item)
+      console.log(item);
     }
     setIsVisibleModal(false);
     setTask(initialState);
   };
 
   const handleDeleteTask = id => {
-   
-    removeTask(id);
-    setIsVisibleModal(false);
-     console.log('Task n.' , id, ' completed: [note]= ', textNote ,'; [signature]= ', signature);
+    if (signature == '') {
+      removeTask(id);
+    } else {
+      removeTask(id);
+      setIsVisibleModal(false);
+      console.log(
+        'Task n.',
+        id,
+        ' completed: [note]= ',
+        textNote,
+        '; [signature]= ',
+        signature,
+      );
+    }
   };
 
   const handletextNote = event => {
@@ -101,6 +110,7 @@ const TaskCard = props => {
   return (
     <>
       <Pressable onPress={() => handleTaskCardPressed(item)}>
+     
         <HStack
           flexWrap={'wrap'}
           py={5}
@@ -160,7 +170,7 @@ const TaskCard = props => {
           </Modal.Body>
           <Modal.Footer>
             <Button
-            colorScheme={color}
+              colorScheme={color}
               disabled={!buttonDisable}
               flex={1}
               onPress={() => handleDeleteTask(item.id)}>

@@ -1,29 +1,75 @@
-import React, {useState} from 'react';
-import {useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+
 import {
   View,
   Button,
   Text,
   TouchableOpacity,
+  FlatList,
   StyleSheet,
   Alert,
+  VStack,
+  Center,
+  Heading,
+  Box,
 } from 'react-native';
+
 import {Calendar} from 'react-native-calendars';
 import PushNotification from 'react-native-push-notification';
 import notifee from '@notifee/react-native';
 import messaging from '@react-native-firebase/messaging';
 import AgendaComponent from '../../components/AgendaComponent';
+import { GlobalContext } from './GlobalState';
+import { Modal } from 'native-base';
+import ModalEvent from '../../components/ModalEvent';
+
+const initialState = { id: null , date: '', name: ''};
 
 
-const CalendarPage = props => {
+const CalendarPage = () => {
   const [selectedDate, setSelectedDate] = useState('2023-06-10');
   const [selectedDay, setSelectedDay] = useState('');
   const [savedEvent, setSavedEvent] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [event, setEvent] = useState(initialState);
+  const [isUpdating, setIsUpdating] = useState(false);
 
+  const {addEvent, updateEvent, eventList} = useContext(GlobalContext);
+
+
+  const handleCloseModal = () => {
+    setModal(false);
+    setEvent(initialState);
+    console.log('ciao')
+  };
+
+  const handleOpenModal = () => {
+    setModal(true);
+  };
+
+  const handleEvent = inputValue => {
+    const eventId = event.id ? event.id : Date.now();
+    setEvent({id: eventId, date: Date().getDate(), name: inputValue});
+  };
+
+  const handleAddEvent = () => {
+    isUpdating ? updateEvent(event) : addEvent(event);
+    handleCloseModal();
+    setIsUpdating(false);
+  };
   const handleDatePress = date => {
     console.log(date);
     setSelectedDate(date.dateString);
     setSelectedDay(date.day);
+  };
+
+  const handleEventCardPressed = item => {
+    setIsUpdating(true);
+    setEvent(item);
+    //setAdd(false);
+
+    setModal(true);
+   
   };
 
   const handleEventSave = () => {
@@ -114,10 +160,28 @@ const CalendarPage = props => {
 
   return (
     <>
- 
-<AgendaComponent selectedDate={selectedDate}/>
+      <AgendaComponent
+              selectedDate={selectedDate} />
+ <FlatList
+            data={eventList}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+           /* renderItem={({item}) => (
+               <AgendaComponent
+              selectedDate={selectedDate}
+                id={item.id}
+                item={item}
+                setEvent={setEvent}
+                setModal={setModal}
+                handleEventCardPressed={handleEventCardPressed}
+                handleCloseModal={handleCloseModal}
+              /> 
+            )}*/
+          />
 
-    {/* <View style={styles.container}>
+
+{/* 
+    <View style={styles.container}>
       <Text style={styles.heading}>Calendario</Text>
 
       <View>
@@ -127,7 +191,7 @@ const CalendarPage = props => {
         />
       </View>
 
-      <Calendar onDayPress={handleDatePress} markedDates={mark} {...props} />
+      <Calendar onDayPress={handleDatePress} markedDates={mark} />
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={handleEventSave}>
@@ -139,6 +203,16 @@ const CalendarPage = props => {
         </TouchableOpacity>
       </View>
     </View> */}
+
+
+<Modal isOpen={modal} onClose={handleCloseModal} size="lg">
+            <ModalEvent
+              event={event}
+              selectedDate={selectedDate}
+              handleEvent={handleEvent}
+              handleAddEvent={handleAddEvent}
+            />
+          </Modal>
 </>
   )
 };

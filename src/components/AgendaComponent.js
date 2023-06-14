@@ -34,6 +34,7 @@ function AgendaComponent(props) {
         renderItem={(item, isFirst) => (
           <TouchableOpacity style={styles.item}>
             <Text style={styles.itemText}>{item.name}</Text>
+           
           </TouchableOpacity>
         )}
       />

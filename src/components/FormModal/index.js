@@ -9,6 +9,7 @@ const FormModal = props => {
   const [color, setColor] = useState('red');
 
   useEffect(() => {
+
     if (task.text.length > 0) {
       setButtonDisable(true);
       setColor('indigo')

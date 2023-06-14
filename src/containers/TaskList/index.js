@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   AddIcon,
   FlatList,
@@ -24,7 +24,7 @@ const TaskList = () => {
 
   const [isVisibleModal, setIsVisibleModal] = useState(false);
 
-  const {addTask, updateTask, taskList} = useContext(GlobalContext);
+  const {addTask, updateTask, taskList, firstRender} = useContext(GlobalContext);
 
   const handleCloseModal = () => {
     setModal(false);
@@ -39,6 +39,12 @@ const TaskList = () => {
     const taskId = task.id ? task.id : Date.now();
     setTask({id: taskId, text: inputValue, completed: false});
   };
+
+  const handleFirstRender = () =>{
+
+    firstRender();
+  };
+
   const handleAddTask = () => {
     isUpdating ? updateTask(task) : addTask(task);
     handleCloseModal();
@@ -61,9 +67,13 @@ const TaskList = () => {
    
   };
 
+  useEffect(() => {
+    handleFirstRender();
+  }, [1]);
+
   return (
     <Center w="100%">
-      <Box safeArea p="2" py="30" w="90%" maxW="300">
+      <Box safeArea p="2" py="30" w="90%" maxW="300" >
         <Heading
           size="2xl"
           fontWeight="600"

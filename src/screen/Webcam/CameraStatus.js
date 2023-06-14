@@ -1,44 +1,120 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {Text} from 'react-native';
+import {
+  Center,
+  Box,
+  VStack,
+  Heading,
+  AddIcon,
+  IconButton,
+  Modal,
+  FormControl,
+  Input,
+  Button,
+  FlatList,
+} from 'native-base';
+import {CameraModal} from '../../components';
+import {GlobalContext} from './GlobalState';
+import CameraCard from './CameraCard';
+import CameraData from './CameraData';
 
-import {Center, Heading, VStack, Button, Text, Box} from 'native-base';
+const initialState = {
+  id: null,
+  name: '',
+};
 
+var i = 4;
 const CameraStatus = () => {
+  const navigation = useNavigation();
+  const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const [cam, setCam] = useState(initialState);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [idData, setIdData] = useState(0);
+
+  const {addCam, updateCam, CamList, firstRender} = useContext(GlobalContext);
+
+
+  useEffect(() => {
+    handleFirstRender();
+  }, [1]);
+
   const onGoBackPressed = () => {
     navigation.navigate('HomeScreen');
   };
 
-  const [CameraStates, setCameraStates] = useState([
-    {id: 1, name: 'Camera 1'},
-    {id: 2, name: 'Camera 2'},
-    {id: 3, name: 'Camera 3'},
-  ]);
-  const navigation = useNavigation();
+  const handleOpenModal = () => {
+    setIsVisibleModal(true);
+  };
 
-  const handleCameraPress = id => {
-    // Esegui l'azione desiderata quando viene premuto una camera
-    // In questo esempio, siamo solo reindirizzati a una pagina specifica associata a ciascuno stato
-    switch (id) {
+  const handleCam = inputValue => {
+    const CamId = cam.id ? cam.id : i;
+    setCam({id: CamId, name: inputValue});
+
+    i++;
+    // console.log(i);
+  };
+
+  const handleFirstRender = () => {
+    firstRender();
+  };
+
+  const handleCloseModal = () => {
+    setIsVisibleModal(false);
+    setCam(initialState);
+  };
+  const handleAddCamera = () => {
+    addCam(cam);
+    handleCloseModal();
+    setIsUpdating(false);
+  };
+
+  useEffect(() => {
+    if (idData != 0)
+      navigation.navigate('CameraData', {idData: idData, item: cam});
+  }, [idData]);
+
+  async function handleCameraPress(item) {
+ 
+    /*   switch (item.id) {
       case 1:
-        // Reindirizza a una pagina specifica per l'allarme 1
-        navigation.navigate('CameraDevices');
-        console.log('Redirect to Camera 1');
+        if (idData == 1) {
+          navigation.navigate('CameraData', {idData: idData});
+        }
+        setIdData(1);
+        //await new Promise(r => setIdData(1));
+        // navigation.navigate('CameraData' , {idData: idData});
+        //console.log('Redirect to Camera 1');
         break;
       case 2:
-        // Reindirizza a una pagina specifica per l'allarme 2
-        navigation.navigate('CameraDevices');
-        console.log('Redirect to Camera 2');
+        if (idData == 2) {
+          navigation.navigate('CameraData', {idData: idData});
+        }
+        setIdData(2);
+        // navigation.navigate('CameraData', {idData: idData});
+        //console.log('Redirect to Camera 2');
         break;
       case 3:
-        // Reindirizza a una pagina specifica per l'allarme 3
-        navigation.navigate('CameraDevices');
-        console.log('Redirect to Camera 3');
+        if (idData == 3) {
+          navigation.navigate('CameraData', {idData: idData});
+        }
+        setIdData(3);
+        // navigation.navigate('CameraData', {idData: idData});
+        // console.log('Redirect to Camera 3');
         break;
       default:
+        console.log('ciao');
         break;
+    } */
+
+    for (let i = 1; i <= CamList.length; i++) {
+      if (item.id == i) {
+        setIdData(i);
+        navigation.navigate('CameraData', {idData: idData, item: item});
+      }
     }
-  };
+  }
 
   return (
     <Center w="100%">
@@ -54,16 +130,30 @@ const CameraStatus = () => {
             }}>
             WEBCAM STATES
           </Heading>
-          <VStack space={3} mt="10">
-            {CameraStates.map(Webcam => (
-              <TouchableOpacity
-                key={Webcam.id}
-                style={styles.WebcamItem}
-                onPress={() => handleCameraPress(Webcam.id)}>
-                <Text style={styles.WebcamName}>{Webcam.name}</Text>
-              </TouchableOpacity>
-            ))}
-          </VStack>
+
+          <IconButton
+            colorScheme="indigo"
+            rounded="full"
+            size="md"
+            variant="solid"
+            icon={<AddIcon />}
+            onPress={() => handleOpenModal()}
+          />
+
+          <FlatList
+            data={CamList}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+            renderItem={({item}) => (
+              <CameraCard
+                id={item.id}
+                item={item}
+                setCam={setCam}
+                handleCameraPress={handleCameraPress}
+                handleCloseModal={handleCloseModal}
+              />
+            )}
+          />
           <TouchableOpacity>
             <Button
               onPress={() => onGoBackPressed()}
@@ -73,6 +163,14 @@ const CameraStatus = () => {
             </Button>
           </TouchableOpacity>
         </VStack>
+
+        <Modal isOpen={isVisibleModal} onClose={handleCloseModal} size="lg">
+          <CameraModal
+            cam={cam}
+            handleCam={handleCam}
+            handleAddCamera={handleAddCamera}
+          />
+        </Modal>
       </Box>
     </Center>
   );
