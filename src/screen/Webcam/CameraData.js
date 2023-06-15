@@ -1,4 +1,10 @@
-import React, {useContext, useState, useEffect, useCallback} from 'react';
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react';
 import {GlobalContext} from './GlobalState';
 import {
   View,
@@ -31,59 +37,53 @@ let data = [
 ];
 
 const CameraData = ({route}) => {
-  const [data, setData] = useState({id: null, name: ''});
+  const [cam, setCam] = useState({id: null, name: ''});
   const {idData, item} = route.params;
+  const [render, setRender] = useState(false);
   //const {item} = props;
   const {updateCam, removeCam} = useContext(GlobalContext);
-  console.log('item ', item);
-  //console.log('id data ', idData);
-  // console.log('itemid ',item.id);
-  console.log('idData 1:', idData);
+  //console.log('item ', item);
+  //console.log('item.id:', idData);
 
+  useEffect(() => {
+    setRender(true);
+    setCam({
+      id: idData,
+      name: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    });
 
-  // DA FINIRE QUESTO! DOVREMMO RICHIAMARE QUESTO METODO DENTRO UNA FUNZIONE MA NON SAPPIAMO DOVE CHIAMARLA
-  //const
-  // setData({id: idData, name: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'})
+    //console.log('render ', render);
+  }, []);
 
-  const sceltaId = item => {
-    switch (item.id) {
-      case 1:
-        break;
-
-      case 2:
-        break;
-
-      case 3:
-        break;
-
-      default:
-        break;
-    }
-  };
+  let newArray = [cam];
 
   return (
     <SafeAreaView>
-      <FlatList
-        data={data}
-        keyExtractor={item => item.id}
-        renderItem={({item}) => {
-          return (
-            <ScrollView style={{marginTop: 10}}>
-              <View style={{alignItems: 'center'}}>
-                <Text style={styles.title}>Camera {item.id}</Text>
-              </View>
-              <VideoPlayer
-                video={{uri: item.name}}
-                autoplay={false}
-                defaultMuted={true}
-                videoWidth={1500}
-                videoHeight={1000}
-                thumbnail={require('../../../assets/images/Cam.jpg')}
-              />
-            </ScrollView>
-          );
-        }}
-      />
+      {render ? (
+        <FlatList
+          data={newArray}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => {
+            return (
+              <ScrollView style={{marginTop: 10}}>
+                <View style={{alignItems: 'center'}}>
+                  <Text style={styles.title}>Camera {item.id}</Text>
+                </View>
+                <VideoPlayer
+                  video={{uri: item.name}}
+                  autoplay={false}
+                  defaultMuted={true}
+                  videoWidth={1500}
+                  videoHeight={1000}
+                  thumbnail={require('../../../assets/images/Cam.jpg')}
+                />
+              </ScrollView>
+            );
+          }}
+        />
+      ) : (
+        <Text>Nessuna camera</Text>
+      )}
     </SafeAreaView>
   );
 };

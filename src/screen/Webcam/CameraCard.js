@@ -35,7 +35,7 @@ const CameraDevices = props => {
 
   return (
     <Pressable onPress={() => handleCameraPress(item)}>
-      {console.log('item: -> ', item)}
+      {/* {console.log('item: -> ', item)} */}
       <HStack
         flexWrap={'wrap'}
         py={5}

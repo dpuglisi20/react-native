@@ -53,7 +53,7 @@ const CameraStatus = () => {
     setCam({id: CamId, name: inputValue});
 
     i++;
-    // console.log(i);
+
   };
 
   const handleFirstRender = () => {
@@ -70,11 +70,15 @@ const CameraStatus = () => {
     setIsUpdating(false);
   };
 
+  // UTILE PER LA RIMOZIONE DELLE CAM
+/* 
   useEffect(() => {
     if (idData != 0)
-      navigation.navigate('CameraData', {idData: idData, item: cam});
+      //navigation.navigate('CameraData', {idData: idData, item: cam});
+      console.log('cam in cameraStatus ', cam)
+      
   }, [idData]);
-
+ */
   async function handleCameraPress(item) {
  
     /*   switch (item.id) {
@@ -111,7 +115,9 @@ const CameraStatus = () => {
     for (let i = 1; i <= CamList.length; i++) {
       if (item.id == i) {
         setIdData(i);
-        navigation.navigate('CameraData', {idData: idData, item: item});
+        navigation.navigate('CameraData', {idData: item.id, item: item});
+        console.log('CameraData ', item.id ,' __ item ', item)
+        
       }
     }
   }
