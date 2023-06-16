@@ -10,7 +10,7 @@ const SmartDeviceControl = () => {
   const toggleDeviceStatus = () => {
     const newStatus = deviceStatus === 'off' ? 'on' : 'off';
     setDeviceStatus(newStatus);
-    // Simula l'invio della richiesta API per aggiornare lo stato del dispositivo
+    //-- SIMULATE SENDING THE API REQUEST TO UPDATE THE DEVICE STATE --//
     simulateDeviceAPIRequest({
       status: newStatus,
       temperature: deviceTemperature,
@@ -20,7 +20,7 @@ const SmartDeviceControl = () => {
   const increaseTemperature = () => {
     const newTemperature = deviceTemperature + 1;
     setDeviceTemperature(newTemperature);
-    // Simula l'invio della richiesta API per aggiornare la temperatura del dispositivo
+    //-- SIMULATE SENDING THE API REQUEST TO UPDATE THE TEMPERATURE OF THE DEVICE --//
     simulateDeviceAPIRequest({
       status: deviceStatus,
       temperature: newTemperature,
@@ -30,19 +30,19 @@ const SmartDeviceControl = () => {
   const decreaseTemperature = () => {
     const newTemperature = deviceTemperature - 1;
     setDeviceTemperature(newTemperature);
-    // Simula l'invio della richiesta API per aggiornare la temperatura del dispositivo
+    //-- SIMULATE SENDING THE API REQUEST TO UPDATE THE TEMPERATURE OF THE DEVICE --//
     simulateDeviceAPIRequest({
       status: deviceStatus,
       temperature: newTemperature,
     });
   };
 
+  //-- SIMULATE THE API CALL WITH A TIMEOUT TO SIMULATE THE RESPONSE TIME --//
   const simulateDeviceAPIRequest = data => {
-    // Simula la chiamata API con un timeout per simulare il tempo di risposta
     setTimeout(() => {
-      // Simula il salvataggio dei dati aggiornati nel backend
       console.log('Dati aggiornati:', data);
     }, 1000);
+    //-- INCREASE THIS TIME TO INCREASE THE SIMULATED WAIT TIME --//
   };
 
   return (

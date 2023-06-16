@@ -1,33 +1,20 @@
 import React, {useContext, useState} from 'react';
 import {GlobalContext} from './GlobalState';
-import {
-  Text,
-  StyleSheet,
-} from 'react-native';
+import {Text} from 'react-native';
 
-import {
-  HStack,
-  Pressable,
-  useColorMode,
-} from 'native-base';
-
-const initialState = {
-  id: null,
-  name: '',
-};
+import {HStack, Pressable} from 'native-base';
 
 const CameraDevices = props => {
-  const {updateCam, removeCam} = useContext(GlobalContext);
+  const {removeCam} = useContext(GlobalContext);
 
-  const {colorMode} = useColorMode();
   const [color, setColor] = useState('red');
-  const bgColor = colorMode === 'dark' ? 'primary.800' : 'primary.200';
+  const bgColor = 'white';
 
   const [isVisibleModal, setIsVisibleModal] = useState(false);
 
   const {item, handleCameraPress} = props;
 
-//PER ORA NON E' UTILIZZATO
+  //-- FOR NOW IT IS NOT USED BUT IT COULD BE USED FOR CANCELLATION IN THE FUTURE --//
   const handleDeleteCam = id => {
     removeCam(id);
     setIsVisibleModal(false);
@@ -35,7 +22,6 @@ const CameraDevices = props => {
 
   return (
     <Pressable onPress={() => handleCameraPress(item)}>
-      {/* {console.log('item: -> ', item)} */}
       <HStack
         flexWrap={'wrap'}
         py={5}
@@ -43,15 +29,16 @@ const CameraDevices = props => {
         px={5}
         bg={bgColor}
         mb={4}
-        justifyContent="space-between"
+        justifyContent="center"
         alignItems="center">
         <HStack space={2} alignItems="center" maxW={'100%'}>
-        <Text >{item.name}</Text> 
+          <Text>{item.name}</Text>
         </HStack>
 
-        {/* TOGLIERE I COMMENTI PER RIMETTERE BOTTONE MA POI GESTIRE LA VISUALIZZAZIONE IN CAMERA STATUS PERCHE' SI SBALLANO GLI INDICI*/}
+        {/* TOGLIERE I COMMENTI PER RIMETTERE BOTTONE ELIMINA CAM MA POI GESTIRE LA VISUALIZZAZIONE 
+        IN CAMERASTATUS PERCHE' SI SBALLANO GLI INDICI DURANTE LA CANCELLAZIONE DI UNA CAM*/}
 
-       {/*  <IconButton
+        {/*  <IconButton
           rounded="full"
           variant="outline"
           size={8}
@@ -61,42 +48,9 @@ const CameraDevices = props => {
           icon={<CloseIcon />}
           onPress={() => handleDeleteCam(item.id)}
         /> */}
-        
       </HStack>
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // padding: 16,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#051C60',
-    margin: 30,
-  },
-  cameraDevice: {
-    height: 60,
-    borderRadius: 8,
-    backgroundColor: 'gray',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 16,
-  },
-  cameraName: {
-    fontSize: 18,
-    color: 'white',
-  },
-  backgroundVideo: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-  },
-});
 
 export default CameraDevices;

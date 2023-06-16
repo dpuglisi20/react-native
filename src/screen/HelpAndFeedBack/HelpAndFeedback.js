@@ -68,19 +68,4 @@ const HelpAndFeedback = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#051C60',
-    margin: 30,
-  },
-});
-
 export default HelpAndFeedback;

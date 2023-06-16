@@ -1,13 +1,8 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import CustomInput from '../../../components/CustomInput';
 import CustomButton from '../../../components/CustomButton/CustomButton';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const ForgotPasswordScreen = () => {
   const [username, setUsername] = useState('');
@@ -15,15 +10,13 @@ const ForgotPasswordScreen = () => {
   const navigation = useNavigation();
 
   const onSendPressed = () => {
-    console.warn('confirm press');
     navigation.navigate('NewPassword');
   };
 
   const onSignInPress = () => {
-    console.warn('onSignInPress');
     navigation.navigate('SignIn');
   };
- 
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
@@ -37,11 +30,11 @@ const ForgotPasswordScreen = () => {
 
         <CustomButton text="SEND" onPress={onSendPressed} />
 
-             <CustomButton 
-                text="Back to Sign in" 
-                onPress={onSignInPress} 
-                type="TERTIARY"
-            />
+        <CustomButton
+          text="Back to Sign in"
+          onPress={onSignInPress}
+          type="TERTIARY"
+        />
       </View>
     </ScrollView>
   );
@@ -53,12 +46,12 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
-  title:{
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#051C60',
     margin: 10,
-  }
+  },
 });
 
 export default ForgotPasswordScreen;

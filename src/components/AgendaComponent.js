@@ -1,13 +1,11 @@
-import { Button } from 'native-base';
 import React from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
 } from 'react-native';
-import { Agenda } from 'react-native-calendars';
+import {Agenda} from 'react-native-calendars';
 import ModalEvent from './ModalEvent';
 
 

@@ -4,25 +4,21 @@ export const GlobalContext = createContext({});
 
 export const GlobalCameras = props => {
   const [CamList, setCamList] = useState([]);
-  
-  //Adesso è statico, se si vuole rendere dinamico bisogna capire come assegnare id in modo casuale 
+
+  //-- THESE FIRST 3 ARE STATIC --//
   const Cameras = [
     {id: 1, name: 'Camera 1'},
     {id: 2, name: 'Camera 2'},
     {id: 3, name: 'Camera 3'},
   ];
 
-  //actions
-
+//-- USEFUL METHOD TO INITIALLY RENDER THE 3 DEFAULT CAMERAS --// 
   const firstRender = () => {
     setCamList(Cameras);
-    //console.log('camera = ' ,Cameras);
   };
 
   const addCam = cam => {
     setCamList([...CamList, cam]);
-
-    console.log(CamList);
   };
 
   const removeCam = id => {
@@ -32,9 +28,8 @@ export const GlobalCameras = props => {
 
   const updateCam = cam => {
     const newCamList = CamList.map(prevCam =>
-        cam.id === prevCam.id ? cam : prevCam,
+      cam.id === prevCam.id ? cam : prevCam,
     );
-    //console.log(newTaskList);
     setCamList(newCamList);
   };
 
@@ -45,6 +40,7 @@ export const GlobalCameras = props => {
     removeCam,
     updateCam,
   };
+  
   return (
     <GlobalContext.Provider value={contextValue}>
       {props.children}

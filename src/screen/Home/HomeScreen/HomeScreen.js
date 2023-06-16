@@ -1,58 +1,20 @@
 import React from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {
-  Center,
-  Heading,
-  VStack,
-  Button,
-  Text,
-  Box,
-  ScrollView,
-} from 'native-base';
+import {Center, VStack, Button, Text, Box} from 'native-base';
 
 const HomeScreen = () => {
-  const handleButtonPress = buttonText => {
-    // Qui posso gestire l'azione del pulsante
-    console.log('Pulsante premuto:', buttonText);
-  };
-
   const navigation = useNavigation();
 
-  //PROFILE
+  //-- PROFILE --//
   const onProfilePressed = () => {
     navigation.navigate('Profile');
   };
 
-  //HELP AND FEEDB
-  const onHelpAndFeedPressed = () => {
-    navigation.navigate('HelpAndFeedBack');
-  };
-
-  //ALARMS
-  const onAlarmPressed = () => {
-    navigation.navigate('AlarmStatus');
-  };
-
-  //EVENT
-  const onEventPressed = () => {
-    navigation.navigate('CalendarPage');
-  };
-
-  //ASSETS
+  //-- ASSET --//
   const onAssetsPressed = () => {
     navigation.navigate('SmartDeviceControl');
-  };
-
-  //WEBCAM
-  const onWebcamPressed = () => {
-    navigation.navigate('CameraStatus');
-  };
-
-  //KPI
-  const onMaintenancePressed = () => {
-    navigation.navigate('Maintenance');
   };
 
   //KPI
@@ -60,13 +22,44 @@ const HomeScreen = () => {
     navigation.navigate('DeviceData');
   };
 
-  //LOGOUT
+  //-- ALARM --//
+  const onAlarmPressed = () => {
+    navigation.navigate('AlarmStatus');
+  };
+
+  //-- EVENT --//
+  const onEventPressed = () => {
+    navigation.navigate('CalendarPage');
+  };
+
+  //-- WEBCAM --//
+  const onWebcamPressed = () => {
+    navigation.navigate('CameraStatus');
+  };
+
+  //-- MAINTENANCE --//
+  const onMaintenancePressed = () => {
+    navigation.navigate('Maintenance');
+  };
+
+  //-- DATASHEET --//
+  const onDocumentPressed = () => {
+    navigation.navigate('FileStatus');
+  };
+
+  //-- HELP AND FEEDBACK --//
+  const onHelpAndFeedPressed = () => {
+    navigation.navigate('HelpAndFeedBack');
+  };
+
+  //-- LOGOUT --//
   const onLogoutPressed = () => {
     navigation.navigate('SignIn');
   };
   return (
     <Center w="100%">
       <Box safeArea py="30" w="90%" maxW="300">
+        
         <TouchableOpacity>
           <Button
             height={90}
@@ -179,7 +172,7 @@ const HomeScreen = () => {
               width={170}
               marginLeft={-6}
               marginRight={3}
-              onPress={() => handleButtonPress()}
+              onPress={() => onDocumentPressed()}
               colorScheme="indigo">
               <Text color={'white'} fontSize="xl">
                 DATASHEET
@@ -198,6 +191,7 @@ const HomeScreen = () => {
             </Button>
           </TouchableOpacity>
         </VStack>
+
         <VStack space={3} mt="3">
           <TouchableOpacity>
             <Button

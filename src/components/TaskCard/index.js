@@ -14,12 +14,13 @@ import {
   Button,
 } from 'native-base';
 
-import {DocumentPicker} from 'react-native-document-picker';
+import DocumentPicker from 'react-native-document-picker';
 const initialState = {
   id: null,
   text: '',
   completed: false,
 };
+
 const TaskCard = props => {
   const {updateTask, removeTask} = useContext(GlobalContext);
   const {colorMode} = useColorMode();
@@ -61,7 +62,6 @@ const TaskCard = props => {
         ...item,
         completed: false,
       };
-
       //updateTask(updatedItem);
       setIsVisibleModal(true);
     } else {
@@ -80,7 +80,7 @@ const TaskCard = props => {
       console.log(
         'Task n.',
         id,
-        ' completed: [note]= ',
+        ' completed!! [note]= ',
         textNote,
         '; [signature]= ',
         signature,
@@ -96,21 +96,25 @@ const TaskCard = props => {
     setSignature(event);
   };
 
-  const [fileResponse, setFileResponse] = useState([]);
-  const handleDocumentSelection = useCallback(async () => {
+  const handleDocumentSelection = async () => {
     try {
-      const response = await DocumentPicker.pick({
-        presentationStyle: 'fullScreen',
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.allFiles],
       });
-      setFileResponse(response);
+
+      console.log('File selezionato:', res);
+      // Gestisci il file selezionato qui
     } catch (err) {
-      console.warn(err);
+      if (DocumentPicker.isCancel(err)) {
+        console.log('Selezione del documento annullata');
+      } else {
+        console.log('Errore durante la selezione del documento:', err);
+      }
     }
-  }, []);
+  };
   return (
     <>
       <Pressable onPress={() => handleTaskCardPressed(item)}>
-     
         <HStack
           flexWrap={'wrap'}
           py={5}
@@ -154,16 +158,8 @@ const TaskCard = props => {
               <Input value={textNote} onChangeText={handletextNote} />
 
               <FormControl.Label>Document</FormControl.Label>
-              {fileResponse.map((file, index) => (
-                <Text
-                  key={index.toString()}
-                  style={styles.uri}
-                  numberOfLines={1}
-                  ellipsizeMode={'middle'}>
-                  {file?.uri}
-                </Text>
-              ))}
               <Button onPress={handleDocumentSelection}>Select</Button>
+
               <FormControl.Label>Signature</FormControl.Label>
               <Input value={signature} onChangeText={handleSignature} />
             </FormControl>

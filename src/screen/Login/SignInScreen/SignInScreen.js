@@ -1,27 +1,18 @@
 import React, {useState} from 'react';
 import {
-  View,
-  Image,
-  StyleSheet,
-  useWindowDimensions,
   TouchableOpacity,
 } from 'react-native';
-//import Logo from '../../../../assets/images/Logo.jpg';
+
 import CustomInput from '../../../components/CustomInput';
-//import CustomButton from '../../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 
 import {
-  NativeBaseProvider,
   Center,
   Heading,
   VStack,
   FormControl,
-  Input,
   Link,
   Button,
-  HStack,
-  Text,
   Box,
 } from 'native-base';
 
@@ -29,20 +20,21 @@ const SignInScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-//  const {height} = useWindowDimensions();
+  //  const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
   const onSignInPressed = () => {
-    //validate user
+    //-- VALIDATE USER --//
     navigation.navigate('HomeScreen');
   };
-  //FORGOT PASSWORD
 
+  //-- FORGOT PASSWORD --//
   const onForgotPasswordPressed = () => {
     navigation.navigate('ForgotPassword');
   };
 
-  //REGISTRATION
+  //-- PER IL MOMENTO NON IN USO --/
+        //-- REGISTRATION --//
   /*
     const onSignUpPressed = () => {
         console.warn("Sign Up");
@@ -74,16 +66,16 @@ const SignInScreen = () => {
         <VStack space={3} mt="5">
           <FormControl>
             <FormControl.Label>Username</FormControl.Label>
-            <CustomInput
-          value={username}
-          setValue={setUsername}
-        />
+            <CustomInput value={username} setValue={setUsername} />
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
-            <CustomInput value={password}
-          setValue={setPassword}  secureTextEntry={true}
-          type="password" />
+            <CustomInput
+              value={password}
+              setValue={setPassword}
+              secureTextEntry={true}
+              type="password"
+            />
             <Link
               onPress={() => onForgotPasswordPressed()}
               _text={{
@@ -109,7 +101,5 @@ const SignInScreen = () => {
     </Center>
   );
 };
-
-
 
 export default SignInScreen;

@@ -12,74 +12,63 @@ import {
 } from 'native-base';
 import {Picker} from '@react-native-picker/picker';
 
-const SmartDeviceControl = () => {
+const FileStatus = () => {
   const navigation = useNavigation();
 
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedName, setselectedName] = useState('');
   const [filteredData, setFilteredData] = useState([]);
 
-  const deviceData = [
+  const fileData = [
     {
       id: 1,
-      name: 'Device 1',
-      category: 'Category A',
-      status: 'Off',
+      name: 'Device 1 File',
     },
     {
       id: 2,
-      name: 'Device 2',
-      category: 'Category B',
-      status: 'On',
+      name: 'Device 2 File',
     },
     {
       id: 3,
-      name: 'Device 3',
-      category: 'Category A',
-      status: 'Not initialized',
+      name: 'Device 3 File',
     },
     {
       id: 4,
-      name: 'Device 4',
-      category: 'Category C',
-      status: 'Not initialized',
+      name: 'Device 4 File',
     },
     {
       id: 5,
-      name: 'Device 5',
-      category: 'Category B',
-      status: 'Not initialized',
+      name: 'Device 5 File',
     },
   ];
 
-  const handleCategoryChange = category => {
-    setSelectedCategory(category);
-    filterData(category);
+  const handleNameChange = name => {
+    setselectedName(name);
+    filterFile(name);
   };
 
-  const filterData = category => {
-    const filteredDevices = deviceData.filter(
-      device => device.category === category,
+  const filterFile = name => {
+    const filteredFiles = fileData.filter(
+      file => file.name === name,
     );
-    setFilteredData(filteredDevices);
+    setFilteredData(filteredFiles);
   };
 
   const onGoBackPressed = () => {
     navigation.navigate('HomeScreen');
   };
 
-  const handleDevicePress = id => {
+  const handleFilePress = id => {
     switch (id) {
       case 1:
-        navigation.navigate('SmartDevice');
-        console.log('Redirect to Device 1');
+        navigation.navigate('FileDevice1');
+        console.log('Redirect to File Device 1');
         break;
       case 2:
-        navigation.navigate('SmartDevice2');
-        console.log('Redirect to Device 2');
+        navigation.navigate('FileDevice2');
+        console.log('Redirect to File Device 2');
         break;
       case 3:
-        //navigation.navigate('SmartDevice3');
-        // console.log('Redirect to Device 3');
+        navigation.navigate('NoFile');
         break;
       default:
         break;
@@ -95,13 +84,13 @@ const SmartDeviceControl = () => {
             {/* PUT PY = 40 TO MOVE EVERYTHING TO THE CENTER OF THE PAGE */}
             <View style={styles.container}>
               <Picker
-                selectedValue={selectedCategory}
-                onValueChange={itemValue => handleCategoryChange(itemValue)}
+                selectedValue={selectedName}
+                onValueChange={itemValue => handleNameChange(itemValue)}
                 style={styles.picker}>
-                <Picker.Item label="Select a category" value="" />
-                <Picker.Item label="Category A" value="Category A" />
-                <Picker.Item label="Category B" value="Category B" />
-                <Picker.Item label="Category C" value="Category C" />
+                <Picker.Item label="Select a name" value="" />
+                <Picker.Item label="Device 1" value="Device 1 File" />
+                <Picker.Item label="Device 2" value="Device 2 File" />
+                <Picker.Item label="Device 3" value="Device 3 File" />
               </Picker>
             </View>
             <VStack space={4} mt="5">
@@ -113,7 +102,7 @@ const SmartDeviceControl = () => {
                 _dark={{
                   color: 'warmGray.50',
                 }}>
-                Filter devices for category:
+                Filter file for name:
               </Heading>
               <Heading
                 size="xl"
@@ -123,17 +112,16 @@ const SmartDeviceControl = () => {
                 _dark={{
                   color: 'warmGray.50',
                 }}>
-                "{selectedCategory}"
+                "{selectedName}"
               </Heading>
             </VStack>
-            {filteredData.map(device => (
+            {filteredData.map(file => (
               <VStack space={2} mt="2">
                 <TouchableOpacity
-                  key={device.id}
-                  style={styles.deviceItem}
-                  onPress={() => handleDevicePress(device.id)}>
-                  <Text style={styles.deviceName}>{device.name}</Text>
-                  <Text style={styles.deviceStatus}>{device.status}</Text>
+                  key={file.id}
+                  style={styles.fileItem}
+                  onPress={() => handleFilePress(file.id)}>
+                  <Text style={styles.fileName}>{file.name}</Text>
                 </TouchableOpacity>
               </VStack>
             ))}
@@ -151,13 +139,13 @@ const SmartDeviceControl = () => {
     } else {
       return (
         <Text style={styles.noDataText}>
-           No data to display for this category
+         No data to display for this name
         </Text>
       );
     }
   };
   const renderContent = () => {
-    if (selectedCategory !== '') {
+    if (selectedName !== '') {
       return <View style={styles.container}>{renderFilteredData()}</View>;
     } else {
       return (
@@ -174,28 +162,27 @@ const SmartDeviceControl = () => {
                 _dark={{
                   color: 'warmGray.50',
                 }}>
-                DEVICE STATES
+                FILE STATES
               </Heading>
               <View style={styles.container}>
                 <Picker
-                  selectedValue={selectedCategory}
-                  onValueChange={itemValue => handleCategoryChange(itemValue)}
+                  selectedValue={selectedName}
+                  onValueChange={itemValue => handleNameChange(itemValue)}
                   style={styles.picker}>
-                  <Picker.Item label="Select a category" value="" />
-                  <Picker.Item label="Category A" value="Category A" />
-                  <Picker.Item label="Category B" value="Category B" />
-                  <Picker.Item label="Category C" value="Category C" />
+                   <Picker.Item label="Select a name" value="" />
+                <Picker.Item label="Device 1" value="Device 1 File" />
+                <Picker.Item label="Device 2" value="Device 2 File" />
+                <Picker.Item label="Device 3" value="Device 3 File" />
                 </Picker>
               </View>
               <VStack space={4} mt="5">
                 <VStack space={3} mt="10">
-                  {deviceData.map(device => (
+                  {fileData.map(file => (
                     <TouchableOpacity
-                      key={device.id}
-                      style={styles.deviceItem}
-                      onPress={() => handleDevicePress(device.id)}>
-                      <Text style={styles.deviceName}>{device.name}</Text>
-                      <Text style={styles.deviceStatus}>{device.status}</Text>
+                      key={file.id}
+                      style={styles.fileItem}
+                      onPress={() => handleFilePress(file.id)}>
+                      <Text style={styles.fileName}>{file.name}</Text>
                     </TouchableOpacity>
                   ))}
                 </VStack>
@@ -218,7 +205,7 @@ const SmartDeviceControl = () => {
 };
 
 const styles = StyleSheet.create({
-  deviceItem: {
+    fileItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -229,13 +216,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
     backgroundColor: '#fff',
   },
-  deviceName: {
+  fileName: {
     fontSize: 16,
-  },
-  deviceStatus: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#4287f5',
+   paddingHorizontal:90,
   },
 });
-export default SmartDeviceControl;
+export default FileStatus;

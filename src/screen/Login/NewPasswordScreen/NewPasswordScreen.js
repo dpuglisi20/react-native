@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import CustomInput from '../../../components/CustomInput';
 import CustomButton from '../../../components/CustomButton/CustomButton';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const NewPasswordScreen = () => {
   const [code, setCode] = useState('');

@@ -12,7 +12,7 @@ const AlarmControl = () => {
     setAlarmStatus(newStatus);
 
     incrementActivationCount();
-    // Simula l'invio della richiesta API per aggiornare lo stato dell'allarme
+    //-- SIMULATE SENDING THE API REQUEST TO UPDATE THE ALARM STATE --//
     simulateAlarmAPIRequest(newStatus);
   };
 
@@ -20,16 +20,14 @@ const AlarmControl = () => {
     newStatus = alarmStatus === 'active'
       ? setActivationCount(prevCount => prevCount + 0)
       : setActivationCount(prevCount => prevCount + 1),
-  ) => {
-    //setActivationCount((prevCount) => prevCount + 1);
-  };
+  ) => {};
 
+  //-- SIMULATE THE API CALL WITH A TIMEOUT TO SIMULATE THE RESPONSE TIME --//
   const simulateAlarmAPIRequest = status => {
-    // Simula la chiamata API con un timeout per simulare il tempo di risposta
     setTimeout(() => {
-      // Simula il salvataggio dello stato dell'allarme nel backend
       console.log('Stato allarme aggiornato:', status);
     }, 1000);
+    //-- INCREASE THIS TIME TO INCREASE THE SIMULATED WAIT TIME --//
   };
 
   return (
@@ -83,7 +81,5 @@ const AlarmControl = () => {
     </Center>
   );
 };
-
-
 
 export default AlarmControl;

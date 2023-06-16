@@ -1,13 +1,9 @@
 import React, {useState} from 'react';
 import {
-  View,
-  Text,
-  TextInput,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import CustomButton from '../../components/CustomButton';
 
 import {Center, Heading, VStack, Button, Box, TextArea} from 'native-base';
 
@@ -17,12 +13,8 @@ const Help = () => {
 
   const navigation = useNavigation();
 
-  const onGoBackPressed = () => {
-    navigation.navigate('HelpAndFeedBack');
-  };
-
   const handleSend = () => {
-    // Qui posso inserire la logica per inviare la richiesta di aiuto o il feedback
+   //-- I CAN PUT LOGIC HERE TO SEND A HELP REQUEST --//
     console.warn('Thanks for your help request');
     navigation.navigate('HelpAndFeedBack');
     console.log('Object:', subject);
@@ -49,7 +41,7 @@ const Help = () => {
           shadow={3}
           h={50}
           size={45}
-          placeholder="Insert your object"
+          placeholder="Insert your Object"
           w="300"
           _light={{
             placeholderTextColor: 'trueGray.700',
@@ -59,15 +51,6 @@ const Help = () => {
             },
             _focus: {
               bg: 'coolGray.200:alpha.70',
-            },
-          }}
-          _dark={{
-            bg: 'coolGray.800',
-            _hover: {
-              bg: 'coolGray.900',
-            },
-            _focus: {
-              bg: 'coolGray.900:alpha.70',
             },
           }}
         />
@@ -90,15 +73,6 @@ const Help = () => {
               bg: 'coolGray.200:alpha.70',
             },
           }}
-          _dark={{
-            bg: 'coolGray.800',
-            _hover: {
-              bg: 'coolGray.900',
-            },
-            _focus: {
-              bg: 'coolGray.900:alpha.70',
-            },
-          }}
         />
        
           <TouchableOpacity>
@@ -111,36 +85,5 @@ const Help = () => {
     </Center>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputObject: {
-    width: '100%',
-    height: 40,
-    borderWidth: 1,
-    borderColor: 'gray',
-    marginBottom: 12,
-    paddingHorizontal: 8,
-  },
-  inputMessage: {
-    width: '100%',
-    height: 200,
-    borderWidth: 1,
-    borderColor: 'gray',
-    marginBottom: 12,
-    paddingHorizontal: 8,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#051C60',
-    margin: 30,
-  },
-});
 
 export default Help;

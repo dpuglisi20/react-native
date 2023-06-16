@@ -1,26 +1,10 @@
-import React, {
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {GlobalContext} from './GlobalState';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import VideoPlayer from 'react-native-video-player';
 import {FlatList, ScrollView} from 'native-base';
 
-const initialState = {
-  id: null,
-  name: '',
-};
-
+//-- NOT CURRENTLY IN USE --//
 let data = [
   {
     id: 1,
@@ -40,7 +24,6 @@ const CameraData = ({route}) => {
   const [cam, setCam] = useState({id: null, name: ''});
   const {idData, item} = route.params;
   const [render, setRender] = useState(false);
-  //const {item} = props;
   const {updateCam, removeCam} = useContext(GlobalContext);
   //console.log('item ', item);
   //console.log('item.id:', idData);
@@ -51,8 +34,6 @@ const CameraData = ({route}) => {
       id: idData,
       name: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
     });
-
-    //console.log('render ', render);
   }, []);
 
   let newArray = [cam];
@@ -82,34 +63,18 @@ const CameraData = ({route}) => {
           }}
         />
       ) : (
-        <Text>Nessuna camera</Text>
+        <Text>NO CAMERA</Text>
       )}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     color: '#051C60',
     margin: 30,
-  },
-  cameraDevice: {
-    height: 60,
-    borderRadius: 8,
-    backgroundColor: 'gray',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 16,
-  },
-  cameraName: {
-    fontSize: 18,
-    color: 'white',
   },
 });
 

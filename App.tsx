@@ -14,7 +14,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Navigation from './src/navigation';
 import {GlobalProvider} from './src/screen/Maintenance/GlobalState';
 import {GlobalEvent} from './src/screen/Event/GlobalState';
-import { GlobalCameras } from './src/screen/Webcam/GlobalState';
+import {GlobalCameras} from './src/screen/Webcam/GlobalState';
 
 const newColorTheme = {
   brand: {
@@ -29,13 +29,13 @@ function App(): JSX.Element {
   return (
     <NativeBaseProvider theme={theme}>
       <SafeAreaProvider style={styles.root}>
-     <GlobalProvider> 
-        <GlobalCameras>
-          <Navigation />
-        
-          <GlobalEvent />
+        <GlobalProvider>
+          <GlobalCameras>
+            <Navigation />
+
+            <GlobalEvent />
           </GlobalCameras>
-    </GlobalProvider> 
+        </GlobalProvider>
       </SafeAreaProvider>
     </NativeBaseProvider>
   );

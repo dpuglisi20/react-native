@@ -16,21 +16,17 @@ const Feedback = () => {
     }));
   };
 
-  //PERSONAL FEEDBACK
+  //-- GO ON PERSONAL FEEDBACK --//
   const onPersonalFeedBackPressed = () => {
     navigation.navigate('PersonalFeedBack');
-  };
-
-  const handleSubmit = () => {
-    // Salvare il feedback o inviarlo al server
-    navigation.navigate('HelpAndFeedBack');
-    console.log(feedback);
   };
 
   const handleSend = () => {
     navigation.navigate('HelpAndFeedBack');
     console.log(feedback);
   };
+
+  //-- HERE YOU CAN CHANGE ITEMS.NAME --//
   const items = [
     {id: 1, name: 'Voce 1'},
     {id: 2, name: 'Voce 2'},
@@ -134,13 +130,6 @@ const styles = {
   },
   starsContainer: {
     flexDirection: 'row',
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#051C60',
-    alignSelf: 'center',
-    top: 20,
   },
 };
 

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 
- //All graphics to use
+//-- ALL GRAPHICS TO USE --//
+//-- PER ORA IO HO SCELTO LINECHART --//
 import {
   LineChart,
   BarChart,
@@ -11,26 +12,22 @@ import {
   StackedBarChart,
 } from 'react-native-chart-kit';
 
-import {
-  Center,
-  Heading,
-  VStack,
-  Button,
-  Box,
-} from 'native-base';
+import {Center, Heading, VStack, Button, Box} from 'native-base';
 
 import {Dimensions} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-
 const DeviceData = () => {
-  const [data, setData] = useState([20, 45, 28, 80, 99, 43, 50]); // Data to be modified
-  const [kpi, setKpi] = useState(0); // initial KPI
+  //-- DATA TO BE MODIFIED --//
+  const [data, setData] = useState([20, 45, 28, 80, 99, 43, 50]);
+
+  //-- INITIAL KPI --//
+  const [kpi, setKpi] = useState(0);
+
   const navigation = useNavigation();
   const screenWidth = Dimensions.get('window').width;
 
   const handleCalculateKPI = () => {
-    // Calcola il KPI personalizzato
     const calculatedKPI =
       data.reduce((sum, value) => sum + value, 0) / data.length;
     setKpi(calculatedKPI);
@@ -64,8 +61,8 @@ const DeviceData = () => {
           }}>
           DEVICE DATA
         </Heading>
-        
-         {/* Implement Graphic */}
+
+        {/* IMPLEMENT GRAPHIC */}
         {
           <LineChart
             data={{
@@ -130,7 +127,6 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     borderRadius: 8,
   },
-
 });
 
 export default DeviceData;

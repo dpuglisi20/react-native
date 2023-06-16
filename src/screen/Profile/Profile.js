@@ -1,15 +1,9 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { 
-  Center,
-  Heading,
-  VStack,
-  Button,
-  Box,
-} from 'native-base';
+import {TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {Center, Heading, VStack, Button, Box} from 'native-base';
 
-const Profile= () => {
+const Profile = () => {
   const user = {
     Username: 'example',
     Password: 'example',
@@ -17,12 +11,12 @@ const Profile= () => {
   };
 
   const navigation = useNavigation();
-  
-  const onGoBackPressed = () => { 
+
+  const onGoBackPressed = () => {
     navigation.navigate('HomeScreen');
   };
 
-  const onLogoutPressed = () => { 
+  const onLogoutPressed = () => {
     navigation.navigate('SignIn');
   };
 
@@ -40,58 +34,58 @@ const Profile= () => {
           PROFILE
         </Heading>
         <VStack space={3} mt="2">
-        <Heading
-        mt="4"
-        _dark={{
-          color: 'warmGray.200',
-        }}
-        color="coolGray.600"
-        fontWeight="medium"
-        size="md">
-        Username: {user.Username}
-      </Heading>
-      <Heading
-        mt="4"
-        _dark={{
-          color: 'warmGray.200',
-        }}
-        color="coolGray.600"
-        fontWeight="medium"
-        size="md">
-        Password: {user.Password}
-      </Heading>
-      <Heading
-        mt="4"
-        _dark={{
-          color: 'warmGray.200',
-        }}
-        color="coolGray.600"
-        fontWeight="medium"
-        size="md">
-        Email: {user.Email}
-      </Heading>
-      </VStack>
-      <VStack space={3} mt="5">
-      <TouchableOpacity>
-          <Button
-            onPress={() => onGoBackPressed()}
-            mt="5"
-            colorScheme="indigo">
-           Go Back
-          </Button>
-        </TouchableOpacity>
+          <Heading
+            mt="4"
+            _dark={{
+              color: 'warmGray.200',
+            }}
+            color="coolGray.600"
+            fontWeight="medium"
+            size="md">
+            Username: {user.Username}
+          </Heading>
+          <Heading
+            mt="4"
+            _dark={{
+              color: 'warmGray.200',
+            }}
+            color="coolGray.600"
+            fontWeight="medium"
+            size="md">
+            Password: {user.Password}
+          </Heading>
+          <Heading
+            mt="4"
+            _dark={{
+              color: 'warmGray.200',
+            }}
+            color="coolGray.600"
+            fontWeight="medium"
+            size="md">
+            Email: {user.Email}
+          </Heading>
         </VStack>
-        </Box>
-        <Box safeArea p="2" py="10" w="90%" maxW="300">
+        <VStack space={3} mt="5">
+          <TouchableOpacity>
+            <Button
+              onPress={() => onGoBackPressed()}
+              mt="5"
+              colorScheme="indigo">
+              Go Back
+            </Button>
+          </TouchableOpacity>
+        </VStack>
+      </Box>
+      <Box safeArea p="2" py="10" w="90%" maxW="300">
         <TouchableOpacity>
           <Button
             onPress={() => onLogoutPressed()}
-             mt="-70"
+            mt="-70"
             colorScheme="indigo">
-           LOGOUT
+            LOGOUT
           </Button>
         </TouchableOpacity>
-        </Box>
+      </Box>
     </Center>
   );
 };

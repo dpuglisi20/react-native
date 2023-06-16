@@ -1,7 +1,6 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import SignInScreen from '../screen/Login/SignInScreen';
 import ForgotPasswordScreen from '../screen/Login/ForgotPasswordScreen';
@@ -24,6 +23,11 @@ import CameraStatus from '../screen/Webcam/CameraStatus';
 import DeviceData from '../screen/Kpi/DeviceData';
 import Maintenance from '../screen/Maintenance/Maintenance';
 import CalendarScreen from '../screen/Event/CalendarScreen';
+import DocumentPickerComponent from '../screen/Datasheet/DocumentPickerComponent';
+import FileStatus from '../screen/Datasheet/FileStatus';
+import FileDevice1 from '../screen/Datasheet/FileDevice1';
+import FileDevice2 from '../screen/Datasheet/FileDevice2';
+import NoFile from '../screen/Datasheet/NoFile';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,7 +56,12 @@ const Navigation = () => {
       <Stack.Screen name='DeviceData' component={DeviceData}/>
       <Stack.Screen name='Maintenance' component={Maintenance}/>
       <Stack.Screen name="Calendar" component={CalendarScreen} />
-      
+      <Stack.Screen name="DocumentPickerComponent" component={DocumentPickerComponent} />
+      <Stack.Screen name="FileStatus" component={FileStatus} />
+      <Stack.Screen name="FileDevice1" component={FileDevice1} />
+      <Stack.Screen name="FileDevice2" component={FileDevice2} />
+      <Stack.Screen name="NoFile" component={NoFile} />
+
       </Stack.Navigator>
     </NavigationContainer>
   )

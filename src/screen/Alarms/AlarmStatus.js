@@ -18,23 +18,21 @@ const AlarmStatusPage = () => {
   ]);
 
   const handleAlarmPress = id => {
-    // Esegui l'azione desiderata quando viene premuto uno stato di allarme
-    // In questo esempio, siamo solo reindirizzati a una pagina specifica associata a ciascuno stato
     switch (id) {
       case 1:
-        // Reindirizza a una pagina specifica per l'allarme 1
+   
         navigation.navigate('AlarmControl');
         console.log('Redirect to Alarm 1');
         break;
       case 2:
-        // Reindirizza a una pagina specifica per l'allarme 2
+     
         navigation.navigate('AlarmControl2');
         console.log('Redirect to Alarm 2');
         break;
       case 3:
-        // Reindirizza a una pagina specifica per l'allarme 3
-        navigation.navigate('AlarmControl3');
-        console.log('Redirect to Alarm 3');
+
+        //navigation.navigate('AlarmControl3');
+       // console.log('Redirect to Alarm 3');
         break;
       default:
         break;
