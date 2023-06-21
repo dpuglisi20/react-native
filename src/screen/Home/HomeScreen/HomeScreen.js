@@ -1,10 +1,55 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity, StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-import {Center, VStack, Button, Text, Box} from 'native-base';
+import {Center, VStack, Button, Text, Box, ScrollView} from 'native-base';
 
 const HomeScreen = () => {
+  const iconNames = ['star', 'camera'];
+  const pages = [
+    {
+      id: 1,
+      name: 'Assets',
+      icon: 'thermometer-full',
+    },
+    {
+      id: 2,
+      name: 'Kpi',
+      icon: 'line-chart',
+    },
+    {
+      id: 3,
+      name: 'Alarm',
+      icon: 'bullhorn',
+    },
+    {
+      id: 4,
+      name: 'Event',
+      icon: 'calendar-o',
+    },
+    {
+      id: 5,
+      name: 'Webcam',
+      icon: 'video-camera',
+    },
+    {
+      id: 6,
+      name: 'Maintenance',
+      icon: 'wrench',
+    },
+    {
+      id: 7,
+      name: 'Datasheet',
+      icon: 'newspaper-o',
+    },
+    {
+      id: 8,
+      name: 'Help and Feedback',
+      icon: 'comments',
+    },
+  ];
+
   const navigation = useNavigation();
 
   //-- PROFILE --//
@@ -12,203 +57,106 @@ const HomeScreen = () => {
     navigation.navigate('Profile');
   };
 
-  //-- ASSET --//
-  const onAssetsPressed = () => {
-    navigation.navigate('SmartDeviceControl');
-  };
-
-  //KPI
-  const onKpiPressed = () => {
-    navigation.navigate('DeviceData');
-  };
-
-  //-- ALARM --//
-  const onAlarmPressed = () => {
-    navigation.navigate('AlarmStatus');
-  };
-
-  //-- EVENT --//
-  const onEventPressed = () => {
-    navigation.navigate('CalendarPage');
-  };
-
-  //-- WEBCAM --//
-  const onWebcamPressed = () => {
-    navigation.navigate('CameraStatus');
-  };
-
-  //-- MAINTENANCE --//
-  const onMaintenancePressed = () => {
-    navigation.navigate('Maintenance');
-  };
-
-  //-- DATASHEET --//
-  const onDocumentPressed = () => {
-    navigation.navigate('FileStatus');
-  };
-
-  //-- HELP AND FEEDBACK --//
-  const onHelpAndFeedPressed = () => {
-    navigation.navigate('HelpAndFeedBack');
-  };
-
   //-- LOGOUT --//
   const onLogoutPressed = () => {
     navigation.navigate('SignIn');
   };
+
+  const handlePagePress = id => {
+    switch (id) {
+      //-- ASSET --//
+      case 1:
+        navigation.navigate('SmartDeviceControl');
+        break;
+
+      //-- KPI --//
+      case 2:
+        navigation.navigate('DeviceData');
+        break;
+
+      //-- ALARM --//
+      case 3:
+        navigation.navigate('AlarmStatus');
+        break;
+
+      //-- EVENT --//
+      case 4:
+        navigation.navigate('CalendarPage');
+        break;
+
+      //-- WEBCAM --//
+      case 5:
+        navigation.navigate('CameraStatus');
+        break;
+
+      //-- MAINTENANCE --//
+      case 6:
+        navigation.navigate('Maintenance');
+        break;
+
+      //-- DATASHEET --//
+      case 7:
+        navigation.navigate('FileStatus');
+        break;
+
+      //-- HELP AND FEEDBACK --//
+      case 8:
+        navigation.navigate('HelpAndFeedBack');
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const renderButtons = pages => {
+    const rows = Math.ceil(pages.length / 2);
+    const buttonRows = [];
+
+    for (let i = 0; i < rows; i++) {
+      const start = i * 2;
+      const end = start + 2;
+      const rowButtons = pages.slice(start, end);
+
+      buttonRows.push(
+        <VStack space={3} mt="10" style={styles.buttonRow}>
+          {rowButtons.map(page => (
+            <TouchableOpacity
+              key={page.id}
+              style={styles.buttonWrapper}
+              onPress={() => handlePagePress(page.id)}>
+              <Icon
+                alignSelf="center"
+                name={page.icon}
+                size={100}
+                color="#4287f5"
+              />
+              <Text style={styles.pageName}>{page.name}</Text>
+            </TouchableOpacity>
+          ))}
+        </VStack>,
+      );
+    }
+    return buttonRows;
+  };
+
   return (
-    <Center w="100%">
-      <Box safeArea py="30" w="90%" maxW="300">
-        
-        <TouchableOpacity>
-          <Button
-            height={90}
-            width={200}
-            borderRadius={30}
-            alignSelf="center"
-            onPress={() => onProfilePressed()}
-            colorScheme="indigo">
-            <Text color={'white'} fontSize="2xl">
-              PROFILE
-            </Text>
-          </Button>
-        </TouchableOpacity>
-
-        <VStack style={styles.row} space={3} mt="3">
+    <ScrollView w={['400', '800']} h="80">
+      <Center w="100%">
+        <View style={styles.container}>{renderButtons(pages)}</View>
+        <VStack space={4} mt="5">
+          <VStack space={3} mt="10"></VStack>
           <TouchableOpacity>
             <Button
-              height={100}
-              borderRadius={30}
-              width={170}
-              marginLeft={-6}
-              marginRight={3}
-              onPress={() => onAssetsPressed()}
-              colorScheme="indigo">
-              <Text color={'white'} fontSize="xl">
-                ASSETS
-              </Text>
-            </Button>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Button
-              height={100}
-              borderRadius={30}
-              width={170}
-              onPress={() => onKpiPressed()}
-              colorScheme="indigo">
-              <Text color={'white'} fontSize="xl">
-                KPI
-              </Text>
-            </Button>
-          </TouchableOpacity>
-        </VStack>
-
-        <VStack style={styles.row} space={3} mt="5">
-          <TouchableOpacity>
-            <Button
-              height={100}
-              padding={30}
-              borderRadius={30}
-              width={170}
-              marginLeft={-6}
-              marginRight={3}
-              onPress={() => onAlarmPressed()}
-              colorScheme="indigo">
-              <Text color={'white'} fontSize="xl">
-                ALARM
-              </Text>
-            </Button>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Button
-              height={100}
-              padding={30}
-              borderRadius={30}
-              width={170}
-              onPress={() => onEventPressed()}
-              colorScheme="indigo">
-              <Text color={'white'} fontSize="xl">
-                EVENT
-              </Text>
-            </Button>
-          </TouchableOpacity>
-        </VStack>
-
-        <VStack style={styles.row} space={3} mt="5">
-          <TouchableOpacity>
-            <Button
-              height={100}
-              padding={30}
-              borderRadius={30}
-              width={170}
-              marginLeft={-6}
-              marginRight={3}
-              onPress={() => onWebcamPressed()}
-              colorScheme="indigo">
-              <Text color={'white'} fontSize="xl">
-                WEBCAM
-              </Text>
-            </Button>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Button
-              height={100}
-              padding={30}
-              borderRadius={30}
-              width={170}
-              onPress={() => onMaintenancePressed()}
-              colorScheme="indigo">
-              <Text color={'white'}>MAINTENANCE</Text>
-            </Button>
-          </TouchableOpacity>
-        </VStack>
-
-        <VStack style={styles.row} space={3} mt="5">
-          <TouchableOpacity>
-            <Button
-              height={100}
-              padding={30}
-              borderRadius={30}
-              width={170}
-              marginLeft={-6}
-              marginRight={3}
-              onPress={() => onDocumentPressed()}
-              colorScheme="indigo">
-              <Text color={'white'} fontSize="xl">
-                DATASHEET
-              </Text>
-            </Button>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Button
-              height={100}
-              padding={30}
-              borderRadius={30}
-              width={170}
-              onPress={() => onHelpAndFeedPressed()}
-              colorScheme="indigo">
-              <Text color={'white'}>HELP AND FEEDBACK</Text>
-            </Button>
-          </TouchableOpacity>
-        </VStack>
-
-        <VStack space={3} mt="3">
-          <TouchableOpacity>
-            <Button
-              height={90}
-              width={200}
-              borderRadius={30}
-              alignSelf="center"
               onPress={() => onLogoutPressed()}
+              mt="10"
               colorScheme="indigo">
-              <Text color={'white'} fontSize="2xl">
-                LOGOUT
-              </Text>
+              Go Back
             </Button>
           </TouchableOpacity>
         </VStack>
-      </Box>
-    </Center>
+      </Center>
+    </ScrollView>
   );
 };
 
@@ -216,6 +164,33 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+
+  pageName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 20,
+  },
+  pageImage: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#4287f5',
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    borderRadius: 5,
+    //backgroundColor: '#f2f2f2',
+  },
+  buttonWrapper: {
+    height: 160,
+    width: '48%', // Larghezza del bottone (48% per lasciare spazio tra i bottoni)
+    marginBottom: -70, // Spazio tra le righe
+    backgroundColor: '#fff',
   },
 });
 
