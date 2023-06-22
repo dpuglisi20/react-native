@@ -1,12 +1,15 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import {Center, VStack, Button, Text, Box, ScrollView} from 'native-base';
 
+const Drawer = createDrawerNavigator();
+
 const HomeScreen = () => {
-  const iconNames = ['star', 'camera'];
+  //Da finire 
+//https://youtu.be/M4WNSjTWFDo 
   const pages = [
     {
       id: 1,
@@ -141,9 +144,10 @@ const HomeScreen = () => {
   };
 
   return (
-    <ScrollView w={['400', '800']} h="80">
+     <ScrollView w={['400', '800']} h="80">
       <Center w="100%">
         <View style={styles.container}>{renderButtons(pages)}</View>
+        
         <VStack space={4} mt="5">
           <VStack space={3} mt="10"></VStack>
           <TouchableOpacity>
@@ -156,7 +160,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </VStack>
       </Center>
-    </ScrollView>
+    </ScrollView> 
   );
 };
 

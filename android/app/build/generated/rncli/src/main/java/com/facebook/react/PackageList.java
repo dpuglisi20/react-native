@@ -23,8 +23,12 @@ import io.invertase.firebase.messaging.ReactNativeFirebaseMessagingPackage;
 import com.reactnativecommunity.picker.RNCPickerPackage;
 // react-native-document-picker
 import com.reactnativedocumentpicker.RNDocumentPickerPackage;
+// react-native-gesture-handler
+import com.swmansion.gesturehandler.RNGestureHandlerPackage;
 // react-native-push-notification
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+// react-native-reanimated
+import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
@@ -86,7 +90,9 @@ public class PackageList {
       new ReactNativeFirebaseMessagingPackage(),
       new RNCPickerPackage(),
       new RNDocumentPickerPackage(),
+      new RNGestureHandlerPackage(),
       new ReactNativePushNotificationPackage(),
+      new ReanimatedPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
       new SvgPackage(),

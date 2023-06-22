@@ -14,7 +14,9 @@ MERGED from [:react-native-firebase_messaging] C:\Progetti\project-react-native\
 MERGED from [:react-native-firebase_app] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-32:12
 MERGED from [:react-native-picker_picker] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-picker\picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-document-picker] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-document-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-gesture-handler] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-push-notification] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-push-notification\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-reanimated] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-reanimated\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-safe-area-context] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-svg] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -94,8 +96,8 @@ MERGED from [com.google.firebase:firebase-components:17.1.0] C:\Users\dpuglisi\.
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\b819b5676899f8aeeb8bae41758d3638\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.browser:browser:1.4.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\ba7fde8d232ba770b72d5737f2907919\transformed\browser-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\4db2126d69aceb653944a7706bd3d989\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.6.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\558b9dc5f6809752125a396f7eb63656\transformed\jetified-core-ktx-1.6.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\7ac667f49817b2b448f2a04922038827\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.core:core-ktx:1.5.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\a49272562904fe7a8a2fe9b80758aaf9\transformed\jetified-core-ktx-1.5.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\a079c2d918c432337e94de3eb8eec561\transformed\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\5bc96b03115ebe556cee9fe21a3831b6\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\d575ba9a96bb4c726fa88092a9404697\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -331,8 +333,12 @@ MERGED from [:react-native-picker_picker] C:\Progetti\project-react-native\react
 MERGED from [:react-native-picker_picker] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-picker\picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-document-picker] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-document-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-document-picker] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-document-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-gesture-handler] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-gesture-handler] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-push-notification] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-push-notification\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-push-notification] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-push-notification\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-reanimated] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-reanimated\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-reanimated] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-reanimated\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] C:\Progetti\project-react-native\react-native-new\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
@@ -491,10 +497,10 @@ MERGED from [androidx.browser:browser:1.4.0] C:\Users\dpuglisi\.gradle\caches\tr
 MERGED from [androidx.browser:browser:1.4.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\ba7fde8d232ba770b72d5737f2907919\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\4db2126d69aceb653944a7706bd3d989\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\4db2126d69aceb653944a7706bd3d989\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.6.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\558b9dc5f6809752125a396f7eb63656\transformed\jetified-core-ktx-1.6.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.6.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\558b9dc5f6809752125a396f7eb63656\transformed\jetified-core-ktx-1.6.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\7ac667f49817b2b448f2a04922038827\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\7ac667f49817b2b448f2a04922038827\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core-ktx:1.5.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\a49272562904fe7a8a2fe9b80758aaf9\transformed\jetified-core-ktx-1.5.0\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.core:core-ktx:1.5.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\a49272562904fe7a8a2fe9b80758aaf9\transformed\jetified-core-ktx-1.5.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\a079c2d918c432337e94de3eb8eec561\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\a079c2d918c432337e94de3eb8eec561\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\5bc96b03115ebe556cee9fe21a3831b6\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41

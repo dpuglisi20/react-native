@@ -28,6 +28,7 @@ import FileStatus from '../screen/Datasheet/FileStatus';
 import FileDevice1 from '../screen/Datasheet/FileDevice1';
 import FileDevice2 from '../screen/Datasheet/FileDevice2';
 import NoFile from '../screen/Datasheet/NoFile';
+import Menu from '../screen/Home/HomeScreen/Menu';
 
 const Stack = createNativeStackNavigator();
 
@@ -61,6 +62,7 @@ const Navigation = () => {
       <Stack.Screen name="FileDevice1" component={FileDevice1} />
       <Stack.Screen name="FileDevice2" component={FileDevice2} />
       <Stack.Screen name="NoFile" component={NoFile} />
+      <Stack.Screen name="Menu" component={Menu} />
 
       </Stack.Navigator>
     </NavigationContainer>
