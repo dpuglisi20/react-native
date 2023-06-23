@@ -8,7 +8,7 @@ const AlarmStatusPage = () => {
   const navigation = useNavigation();
 
   const onGoBackPressed = () => {
-    navigation.navigate('HomeScreen');
+    navigation.navigate('Menu');
   };
 
   const [alarmStates, setAlarmStates] = useState([

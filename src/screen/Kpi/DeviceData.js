@@ -34,7 +34,7 @@ const DeviceData = () => {
   };
 
   const onGoBackPressed = () => {
-    navigation.navigate('HomeScreen');
+    navigation.navigate('Menu');
   };
 
   const chartConfig = {

@@ -54,7 +54,7 @@ const FileStatus = () => {
   };
 
   const onGoBackPressed = () => {
-    navigation.navigate('HomeScreen');
+    navigation.navigate('Menu');
   };
 
   const handleFilePress = id => {

@@ -14,7 +14,7 @@ const HelpAndFeedback = () => {
     navigation.navigate('Help');
   };
   const onGoBackPressed = () => {
-    navigation.navigate('HomeScreen');
+    navigation.navigate('Menu');
   };
 
   return (

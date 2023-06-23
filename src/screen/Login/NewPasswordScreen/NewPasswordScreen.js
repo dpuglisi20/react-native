@@ -11,7 +11,7 @@ const NewPasswordScreen = () => {
 
   const onSubmitPressed = () => {
     console.warn('onSubmitPressed');
-    navigation.navigate('HomeScreen');
+    navigation.navigate('Menu');
   };
 
   const onSignInPress = () => {

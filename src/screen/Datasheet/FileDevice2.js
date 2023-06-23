@@ -14,7 +14,7 @@ const FileDevice2 = () => {
       const navigation = useNavigation();
 
       const onGoBackPressed = () => {
-        navigation.navigate('HomeScreen');
+        navigation.navigate('Menu');
       };
     
       return (

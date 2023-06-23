@@ -14,7 +14,7 @@ function AgendaComponent(props) {
     const {selectedDate, inputText} = props;
 
     const onGoBackPressed = () => {
-        navigation.navigate('HomeScreen');
+        navigation.navigate('Menu');
       };
 
       

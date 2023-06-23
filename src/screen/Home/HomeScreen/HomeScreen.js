@@ -4,10 +4,13 @@ import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {Center, VStack, Button, Text, Box, ScrollView} from 'native-base';
+import { LogBox } from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
 const HomeScreen = () => {
+  LogBox.ignoreLogs(['Warning: ...']);
+  LogBox.ignoreAllLogs();
   //Da finire 
 //https://youtu.be/M4WNSjTWFDo 
   const pages = [
@@ -129,9 +132,10 @@ const HomeScreen = () => {
               style={styles.buttonWrapper}
               onPress={() => handlePagePress(page.id)}>
               <Icon
+              paddingVertical={15}
                 alignSelf="center"
                 name={page.icon}
-                size={100}
+                size={90}
                 color="#4287f5"
               />
               <Text style={styles.pageName}>{page.name}</Text>
@@ -148,16 +152,8 @@ const HomeScreen = () => {
       <Center w="100%">
         <View style={styles.container}>{renderButtons(pages)}</View>
         
-        <VStack space={4} mt="5">
-          <VStack space={3} mt="10"></VStack>
-          <TouchableOpacity>
-            <Button
-              onPress={() => onLogoutPressed()}
-              mt="10"
-              colorScheme="indigo">
-              Go Back
-            </Button>
-          </TouchableOpacity>
+        <VStack space={4} mt="150">
+        
         </VStack>
       </Center>
     </ScrollView> 
@@ -171,9 +167,10 @@ const styles = StyleSheet.create({
   },
 
   pageName: {
+    paddingHorizontal: 7,
     fontSize: 16,
     fontWeight: 'bold',
-    marginTop: 20,
+    marginTop: 13,
   },
   pageImage: {
     fontSize: 16,

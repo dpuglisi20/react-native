@@ -2,6 +2,7 @@ import React from 'react'
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+import Login from '../screen/Login/Login';
 import SignInScreen from '../screen/Login/SignInScreen';
 import ForgotPasswordScreen from '../screen/Login/ForgotPasswordScreen';
 import NewPasswordScreen from '../screen/Login/NewPasswordScreen';
@@ -28,7 +29,10 @@ import FileStatus from '../screen/Datasheet/FileStatus';
 import FileDevice1 from '../screen/Datasheet/FileDevice1';
 import FileDevice2 from '../screen/Datasheet/FileDevice2';
 import NoFile from '../screen/Datasheet/NoFile';
-import Menu from '../screen/Home/HomeScreen/Menu';
+import Menu from '../screen/Home/Menu';
+import ShareMenu from '../screen/ShareWithFriends/ShareMenu/ShareMenu';
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +40,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name='Login' component={Login}/>
       <Stack.Screen name='SignIn' component={SignInScreen}/>
       <Stack.Screen name='ForgotPassword' component={ForgotPasswordScreen}/>
       <Stack.Screen name='NewPassword' component={NewPasswordScreen}/>
@@ -63,6 +68,7 @@ const Navigation = () => {
       <Stack.Screen name="FileDevice2" component={FileDevice2} />
       <Stack.Screen name="NoFile" component={NoFile} />
       <Stack.Screen name="Menu" component={Menu} />
+      <Stack.Screen name="ShareMenu" component={ShareMenu} />
 
       </Stack.Navigator>
     </NavigationContainer>

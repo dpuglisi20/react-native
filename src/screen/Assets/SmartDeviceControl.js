@@ -64,7 +64,7 @@ const SmartDeviceControl = () => {
   };
 
   const onGoBackPressed = () => {
-    navigation.navigate('HomeScreen');
+    navigation.navigate('Menu');
   };
 
   const handleDevicePress = id => {

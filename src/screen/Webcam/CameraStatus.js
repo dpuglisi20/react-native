@@ -43,7 +43,7 @@ const CameraStatus = () => {
   };
 
   const onGoBackPressed = () => {
-    navigation.navigate('HomeScreen');
+    navigation.navigate('Menu');
   };
 
   const handleOpenModal = () => {

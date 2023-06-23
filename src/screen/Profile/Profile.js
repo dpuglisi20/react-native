@@ -1,28 +1,26 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, Image, View, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Center, Heading, VStack, Button, Box} from 'native-base';
 
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 const Profile = () => {
   const user = {
-    Username: 'example',
-    Password: 'example',
-    Email: 'mario@example.com',
+    Username: 'John Doe',
+    Password: 'johndoe15',
+    Email: 'djohn@example.com',
   };
 
   const navigation = useNavigation();
 
-  const onGoBackPressed = () => {
-    navigation.navigate('HomeScreen');
-  };
-
   const onLogoutPressed = () => {
-    navigation.navigate('SignIn');
+    navigation.navigate('Login');
   };
 
   return (
     <Center w="100%">
-      <Box safeArea p="2" py="40" w="90%" maxW="300">
+      <Box safeArea p="2" py="30" w="90%" maxW="300">
         <Heading
           size="2xl"
           alignSelf={'center'}
@@ -33,7 +31,16 @@ const Profile = () => {
           }}>
           PROFILE
         </Heading>
-        <VStack space={3} mt="2">
+        <VStack space={3} mt="10">
+          <Image
+            source={require('../../../assets/images/user-profile.jpg')}
+            style={{
+              height: 120,
+              width: 120,
+              borderRadius: 50,
+              alignSelf: 'center',
+            }}
+          />
           <Heading
             mt="4"
             _dark={{
@@ -65,26 +72,41 @@ const Profile = () => {
             Email: {user.Email}
           </Heading>
         </VStack>
-        <VStack space={3} mt="5">
-          <TouchableOpacity>
-            <Button
-              onPress={() => onGoBackPressed()}
-              mt="5"
-              colorScheme="indigo">
-              Go Back
-            </Button>
-          </TouchableOpacity>
-        </VStack>
-      </Box>
-      <Box safeArea p="2" py="10" w="90%" maxW="300">
-        <TouchableOpacity>
-          <Button
-            onPress={() => onLogoutPressed()}
-            mt="-70"
-            colorScheme="indigo">
-            LOGOUT
-          </Button>
-        </TouchableOpacity>
+     
+        <VStack space={4} mt="10" py="30" w="100%">
+      <TouchableOpacity
+        onPress={(onLogoutPressed)}
+        style={{
+          alignSelf: 'center',
+          backgroundColor: '#AD40AF',
+          padding: 20,
+          width: '80%',
+          borderRadius: 5,
+          flexDirection: 'row',
+          paddingVertical: 20,
+          marginBottom: 50,
+          borderRadius: 10,
+        }}>
+
+        <Ionicons
+          style={{
+            paddingHorizontal: 10,
+          }}
+          name="exit-outline"
+          size={22}
+          color="#fff"></Ionicons>
+          
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: '#fff',
+            fontFamily: 'Roboto-MediumItalic',
+          }}>
+          Logout
+        </Text>
+      </TouchableOpacity>
+      </VStack>
       </Box>
     </Center>
   );
