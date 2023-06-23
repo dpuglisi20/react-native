@@ -22,7 +22,7 @@ const Feedback = () => {
   };
 
   const handleSend = () => {
-    navigation.navigate('HelpAndFeedBack');
+    navigation.navigate('Menu');
     console.log(feedback);
   };
 

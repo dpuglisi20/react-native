@@ -14,7 +14,7 @@ const FeedbackForm = () => {
 
   const handleSend = () => {
     //-- I CAN PUT LOGIC HERE TO SEND FEEDBACK --//
-    navigation.navigate('HelpAndFeedBack');
+    navigation.navigate('Menu');
     console.log('Message:', message, '| Stars:', rating);
   };
 

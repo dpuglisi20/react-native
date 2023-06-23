@@ -107,7 +107,7 @@ const HomeScreen = () => {
 
       //-- HELP AND FEEDBACK --//
       case 8:
-        navigation.navigate('HelpAndFeedBack');
+        navigation.navigate('HelpAndFeedback');
         break;
 
       default:
@@ -150,7 +150,7 @@ const HomeScreen = () => {
   return (
      <ScrollView w={['400', '800']} h="80">
       <Center w="100%">
-        <View style={styles.container}>{renderButtons(pages)}</View>
+        <View>{renderButtons(pages)}</View>
         
         <VStack space={4} mt="150">
         
@@ -161,6 +161,7 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
+
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -172,20 +173,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 13,
   },
-  pageImage: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#4287f5',
-  },
+
   buttonRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 50,
+    marginTop: 0,
     paddingHorizontal: 10,
     paddingVertical: 15,
     borderRadius: 5,
-    //backgroundColor: '#f2f2f2',
+    //backgroundColor: 'green',
   },
   buttonWrapper: {
     height: 160,

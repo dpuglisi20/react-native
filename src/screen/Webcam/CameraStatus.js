@@ -42,9 +42,9 @@ const CameraStatus = () => {
     firstRender();
   };
 
-  const onGoBackPressed = () => {
+  /* const onGoBackPressed = () => {
     navigation.navigate('Menu');
-  };
+  }; */
 
   const handleOpenModal = () => {
     setIsVisibleModal(true);
@@ -127,14 +127,14 @@ const CameraStatus = () => {
               />
             )}
           />
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Button
               onPress={() => onGoBackPressed()}
               mt="10"
               colorScheme="indigo">
               Go Back
             </Button>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </VStack>
 
         <Modal isOpen={isVisibleModal} onClose={handleCloseModal} size="lg">

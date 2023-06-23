@@ -8,7 +8,8 @@ import ForgotPasswordScreen from '../screen/Login/ForgotPasswordScreen';
 import NewPasswordScreen from '../screen/Login/NewPasswordScreen';
 import HomeScreen from '../screen/Home/HomeScreen/HomeScreen';
 import Profile from '../screen/Profile';
-import HelpAndFeedBack from '../screen/HelpAndFeedBack/HelpAndFeedback';
+import EditProfile from '../screen/Profile/EditProfile';
+import HelpAndFeedback from '../screen/HelpAndFeedBack/HelpAndFeedback';
 import FeedBack from '../screen/HelpAndFeedBack/FeedBack';
 import PersonalFeedBack from '../screen/HelpAndFeedBack/PersonalFeedBack';
 import Help from '../screen/HelpAndFeedBack/Help';
@@ -29,7 +30,7 @@ import FileStatus from '../screen/Datasheet/FileStatus';
 import FileDevice1 from '../screen/Datasheet/FileDevice1';
 import FileDevice2 from '../screen/Datasheet/FileDevice2';
 import NoFile from '../screen/Datasheet/NoFile';
-import Menu from '../screen/Home/Menu';
+import Menu from '../utils/Menu';
 import ShareMenu from '../screen/ShareWithFriends/ShareMenu/ShareMenu';
 
 
@@ -46,7 +47,7 @@ const Navigation = () => {
       <Stack.Screen name='NewPassword' component={NewPasswordScreen}/>
       <Stack.Screen name='HomeScreen' component={HomeScreen}/>
       <Stack.Screen name='Profile' component={Profile}/>
-      <Stack.Screen name='HelpAndFeedBack' component={HelpAndFeedBack}/>
+      <Stack.Screen name='HelpAndFeedback' component={HelpAndFeedback}/>
       <Stack.Screen name='FeedBack' component={FeedBack}/>
       <Stack.Screen name='PersonalFeedBack' component={PersonalFeedBack}/>
       <Stack.Screen name='Help' component={Help}/>
@@ -69,7 +70,7 @@ const Navigation = () => {
       <Stack.Screen name="NoFile" component={NoFile} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="ShareMenu" component={ShareMenu} />
-
+      <Stack.Screen name="EditProfile" component={EditProfile} />
       </Stack.Navigator>
     </NavigationContainer>
   )

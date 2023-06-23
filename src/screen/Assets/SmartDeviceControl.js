@@ -63,9 +63,9 @@ const SmartDeviceControl = () => {
     setFilteredData(filteredDevices);
   };
 
-  const onGoBackPressed = () => {
+  /* const onGoBackPressed = () => {
     navigation.navigate('Menu');
-  };
+  }; */
 
   const handleDevicePress = id => {
     switch (id) {
@@ -137,14 +137,15 @@ const SmartDeviceControl = () => {
                 </TouchableOpacity>
               </VStack>
             ))}
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Button
-                onPress={() => onGoBackPressed()}
+                onPress={() => navigation.navigate('Menu')}
                 mt="10"
                 colorScheme="indigo">
                 Go Back
               </Button>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+            
           </Box>
         </Center>
       );
@@ -199,14 +200,14 @@ const SmartDeviceControl = () => {
                     </TouchableOpacity>
                   ))}
                 </VStack>
-                <TouchableOpacity>
+                {/* <TouchableOpacity>
                   <Button
                     onPress={() => onGoBackPressed()}
                     mt="10"
                     colorScheme="indigo">
                     Go Back
                   </Button>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </VStack>
             </Box>
           </Center>

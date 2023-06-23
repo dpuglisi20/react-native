@@ -16,7 +16,7 @@ const Help = () => {
   const handleSend = () => {
    //-- I CAN PUT LOGIC HERE TO SEND A HELP REQUEST --//
     console.warn('Thanks for your help request');
-    navigation.navigate('HelpAndFeedBack');
+    navigation.navigate('Menu');
     console.log('Object:', subject);
     console.log('Message:', message);
   };

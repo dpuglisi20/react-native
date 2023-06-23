@@ -72,7 +72,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dpuglisi\\.gradle\\caches\\transforms-3\\f9c793245c95ea736b7d97b3879631e1\\transformed\\jetified-play-services-base-18.0.1\\res\\values-zh-rTW\\values.xml",
+                    "source": "C:\\Users\\dpuglisi\\.gradle\\caches\\transforms-3\\7f3fe7acbf02946f8a57136ccd3fccdd\\transformed\\jetified-ucrop-2.2.6-native\\res\\values-zh-rTW\\values-zh-rTW.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,132,186,240,287",
+                        "endColumns": "76,53,53,46,116",
+                        "endOffsets": "127,181,235,282,399"
+                    },
+                    "to": {
+                        "startLines": "53,54,55,56,57",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "5040,5117,5171,5225,5272",
+                        "endColumns": "76,53,53,46,116",
+                        "endOffsets": "5112,5166,5220,5267,5384"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dpuglisi\\.gradle\\caches\\transforms-3\\018271e5513607aa8db41f58feb9744b\\transformed\\jetified-play-services-base-18.1.0\\res\\values-zh-rTW\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

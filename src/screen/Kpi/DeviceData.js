@@ -108,14 +108,14 @@ const DeviceData = () => {
         </Heading>
 
         <VStack space={3} mt="10">
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Button
-              onPress={() => onGoBackPressed()}
+              onPress={() => navigation.navigate('HomeScreen')}
               mt="5"
               colorScheme="indigo">
               Go Back
             </Button>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </VStack>
       </Box>
     </Center>

@@ -7,9 +7,9 @@ import {Center, Heading, VStack, Button, Text, Box} from 'native-base';
 const AlarmStatusPage = () => {
   const navigation = useNavigation();
 
-  const onGoBackPressed = () => {
+ /*  const onGoBackPressed = () => {
     navigation.navigate('Menu');
-  };
+  }; */
 
   const [alarmStates, setAlarmStates] = useState([
     {id: 1, name: 'Alarm 1', status: 'Active'},
@@ -64,14 +64,14 @@ const AlarmStatusPage = () => {
               </TouchableOpacity>
             ))}
           </VStack>
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Button
               onPress={() => onGoBackPressed()}
               mt="10"
               colorScheme="indigo">
               Go Back
             </Button>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </VStack>
       </Box>
     </Center>

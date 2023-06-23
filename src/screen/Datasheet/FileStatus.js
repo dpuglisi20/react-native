@@ -53,9 +53,9 @@ const FileStatus = () => {
     setFilteredData(filteredFiles);
   };
 
-  const onGoBackPressed = () => {
+ /*  const onGoBackPressed = () => {
     navigation.navigate('Menu');
-  };
+  }; */
 
   const handleFilePress = id => {
     switch (id) {
@@ -125,14 +125,14 @@ const FileStatus = () => {
                 </TouchableOpacity>
               </VStack>
             ))}
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Button
                 onPress={() => onGoBackPressed()}
                 mt="10"
                 colorScheme="indigo">
                 Go Back
               </Button>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </Box>
         </Center>
       );
@@ -186,14 +186,14 @@ const FileStatus = () => {
                     </TouchableOpacity>
                   ))}
                 </VStack>
-                <TouchableOpacity>
+                {/* <TouchableOpacity>
                   <Button
                     onPress={() => onGoBackPressed()}
                     mt="10"
                     colorScheme="indigo">
                     Go Back
                   </Button>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </VStack>
             </Box>
           </Center>
