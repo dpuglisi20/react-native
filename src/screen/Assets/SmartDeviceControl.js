@@ -12,6 +12,11 @@ import {
 } from 'native-base';
 import {Picker} from '@react-native-picker/picker';
 
+import {
+  PieChart, 
+} from 'react-native-chart-kit';
+
+
 const SmartDeviceControl = () => {
   const navigation = useNavigation();
 
@@ -24,30 +29,50 @@ const SmartDeviceControl = () => {
       name: 'Device 1',
       category: 'Category A',
       status: 'Off',
+      power: 0,
+      color: '#F44336',
+      legendFontColor: '#7F7F7F',
+      legendFontSize: 15,
     },
     {
       id: 2,
       name: 'Device 2',
       category: 'Category B',
       status: 'On',
+      power: 1,
+      color: '#2196F3',
+      legendFontColor: '#7F7F7F',
+      legendFontSize: 15,
     },
     {
       id: 3,
       name: 'Device 3',
       category: 'Category A',
       status: 'Not initialized',
+      power: 0,
+      color: '#FFEB3B',
+      legendFontColor: '#7F7F7F',
+      legendFontSize: 15,
     },
     {
       id: 4,
       name: 'Device 4',
       category: 'Category C',
       status: 'Not initialized',
+      power: 0,
+      color: '#4CAF50',
+      legendFontColor: '#7F7F7F',
+      legendFontSize: 15,
     },
     {
       id: 5,
       name: 'Device 5',
       category: 'Category B',
       status: 'Not initialized',
+      power: 0,
+      color: '#FF9800',
+      legendFontColor: '#7F7F7F',
+      legendFontSize: 15,
     },
   ];
 
@@ -93,6 +118,7 @@ const SmartDeviceControl = () => {
           <Box safeArea py="30" w="90%" maxW="300">
             {' '}
             {/* PUT PY = 40 TO MOVE EVERYTHING TO THE CENTER OF THE PAGE */}
+
             <View style={styles.container}>
               <Picker
                 selectedValue={selectedCategory}
@@ -128,6 +154,7 @@ const SmartDeviceControl = () => {
             </VStack>
             {filteredData.map(device => (
               <VStack space={2} mt="2">
+                
                 <TouchableOpacity
                   key={device.id}
                   style={styles.deviceItem}
@@ -188,6 +215,28 @@ const SmartDeviceControl = () => {
                   <Picker.Item label="Category C" value="Category C" />
                 </Picker>
               </View>
+
+              <View>
+                
+      <PieChart
+        data={deviceData}
+        width={300}
+        height={200}
+        chartConfig={{
+          backgroundColor: '#ffffff',
+          backgroundGradientFrom: '#ffffff',
+          backgroundGradientTo: '#ffffff',
+          decimalPlaces: 2,
+          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+        }}
+        accessor="power"
+        backgroundColor="transparent"
+        paddingLeft="15"
+        absolute
+      />
+      <Text paddingHorizontal={40} fontSize={15} fontWeight={'bold'}>Active devices</Text>
+    </View>
+
               <VStack space={4} mt="5">
                 <VStack space={3} mt="10">
                   {deviceData.map(device => (

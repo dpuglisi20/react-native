@@ -32,7 +32,7 @@ import FileDevice2 from '../screen/Datasheet/FileDevice2';
 import NoFile from '../screen/Datasheet/NoFile';
 import Menu from '../utils/Menu';
 import ShareMenu from '../screen/ShareWithFriends/ShareMenu/ShareMenu';
-
+//import AgendaPage from '../screen/Event/Agenda';
 
 
 const Stack = createNativeStackNavigator();
@@ -71,6 +71,7 @@ const Navigation = () => {
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="ShareMenu" component={ShareMenu} />
       <Stack.Screen name="EditProfile" component={EditProfile} />
+     
       </Stack.Navigator>
     </NavigationContainer>
   )

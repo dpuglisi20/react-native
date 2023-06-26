@@ -33,7 +33,7 @@ export const GlobalEvent = props => {
   };
   return (
     <GlobalContext.Provider value={contextValue}>
-      {props.children}
+      {/* {props.children} */}
     </GlobalContext.Provider>
   );
 };

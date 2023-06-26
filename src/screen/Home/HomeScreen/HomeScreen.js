@@ -88,6 +88,7 @@ const HomeScreen = () => {
       //-- EVENT --//
       case 4:
         navigation.navigate('CalendarPage');
+       // navigation.navigate('AgendaPage');
         break;
 
       //-- WEBCAM --//

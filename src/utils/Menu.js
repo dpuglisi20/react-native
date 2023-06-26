@@ -22,6 +22,7 @@ import AlarmStatus from '../screen/Alarms/AlarmStatus';
 import CameraStatus from '../screen/Webcam/CameraStatus';
 import HelpAndFeedback from '../screen/HelpAndFeedBack/HelpAndFeedback';
 
+
 const Drawer = createDrawerNavigator();
 
 const Menu = () => {
@@ -29,14 +30,14 @@ const Menu = () => {
     <Drawer.Navigator
       drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
         drawerActiveBackgroundColor: '#4287f5',
         drawerActiveTintColor: '#fff',
         drawerInactiveTintColor: '#333',
 
         drawerLabelStyle: {marginLeft: -20, fontSize: 15},
       }}>
-      <Drawer.Screen
+      <Drawer.Screen 
         name= "Home"
         component={HomeScreen}
       />
