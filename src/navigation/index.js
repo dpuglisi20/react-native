@@ -19,12 +19,10 @@ import SmartDevice2 from '../screen/Assets/SmartDevice2';
 import AlarmControl from '../screen/Alarms/AlarmControl';
 import AlarmControl2 from '../screen/Alarms/AlarmControl2';
 import AlarmStatus from '../screen/Alarms/AlarmStatus';
-import CalendarPage from '../screen/Event/CalendarPage';
 import CameraData from '../screen/Webcam/CameraData';
 import CameraStatus from '../screen/Webcam/CameraStatus';
 import DeviceData from '../screen/Kpi/DeviceData';
 import Maintenance from '../screen/Maintenance/Maintenance';
-import CalendarScreen from '../screen/Event/CalendarScreen';
 import DocumentPickerComponent from '../screen/Datasheet/DocumentPickerComponent';
 import FileStatus from '../screen/Datasheet/FileStatus';
 import FileDevice1 from '../screen/Datasheet/FileDevice1';
@@ -32,7 +30,7 @@ import FileDevice2 from '../screen/Datasheet/FileDevice2';
 import NoFile from '../screen/Datasheet/NoFile';
 import Menu from '../utils/Menu';
 import ShareMenu from '../screen/ShareWithFriends/ShareMenu/ShareMenu';
-//import AgendaPage from '../screen/Event/Agenda';
+import AgendaPage from '../screen/Event/AgendaPage';
 
 
 const Stack = createNativeStackNavigator();
@@ -57,12 +55,10 @@ const Navigation = () => {
       <Stack.Screen name='AlarmStatus' component={AlarmStatus}/>
       <Stack.Screen name='AlarmControl' component={AlarmControl}/>
       <Stack.Screen name='AlarmControl2' component={AlarmControl2}/>
-      <Stack.Screen name='CalendarPage' component={CalendarPage}/>
       <Stack.Screen name='CameraData' component={CameraData}/>
       <Stack.Screen name='CameraStatus' component={CameraStatus}/>
       <Stack.Screen name='DeviceData' component={DeviceData}/>
       <Stack.Screen name='Maintenance' component={Maintenance}/>
-      <Stack.Screen name="Calendar" component={CalendarScreen} />
       <Stack.Screen name="DocumentPickerComponent" component={DocumentPickerComponent} />
       <Stack.Screen name="FileStatus" component={FileStatus} />
       <Stack.Screen name="FileDevice1" component={FileDevice1} />
@@ -71,7 +67,8 @@ const Navigation = () => {
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="ShareMenu" component={ShareMenu} />
       <Stack.Screen name="EditProfile" component={EditProfile} />
-     
+      <Stack.Screen name="AgendaPage" component={AgendaPage} />
+
       </Stack.Navigator>
     </NavigationContainer>
   )

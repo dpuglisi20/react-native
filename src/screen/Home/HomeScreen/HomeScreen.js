@@ -2,17 +2,17 @@ import React from 'react';
 import {TouchableOpacity, StyleSheet, View} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import {Center, VStack, Button, Text, Box, ScrollView} from 'native-base';
-import { LogBox } from 'react-native';
+import {LogBox} from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
 const HomeScreen = () => {
   LogBox.ignoreLogs(['Warning: ...']);
   LogBox.ignoreAllLogs();
-  //Da finire 
-//https://youtu.be/M4WNSjTWFDo 
+  //Da finire
+  //https://youtu.be/M4WNSjTWFDo
   const pages = [
     {
       id: 1,
@@ -87,8 +87,8 @@ const HomeScreen = () => {
 
       //-- EVENT --//
       case 4:
-        navigation.navigate('CalendarPage');
-       // navigation.navigate('AgendaPage');
+        //navigation.navigate('CalendarPage');
+        navigation.navigate('AgendaPage');
         break;
 
       //-- WEBCAM --//
@@ -133,7 +133,7 @@ const HomeScreen = () => {
               style={styles.buttonWrapper}
               onPress={() => handlePagePress(page.id)}>
               <Icon
-              paddingVertical={15}
+                paddingVertical={15}
                 alignSelf="center"
                 name={page.icon}
                 size={90}
@@ -149,29 +149,28 @@ const HomeScreen = () => {
   };
 
   return (
-     <ScrollView w={['400', '800']} h="80">
+    <ScrollView w={['400', '800']} h="80">
       <Center w="100%">
         <View>{renderButtons(pages)}</View>
-        
-        <VStack space={4} mt="150">
-        
-        </VStack>
+
+        <VStack space={4} mt="150"></VStack>
       </Center>
-    </ScrollView> 
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
 
   pageName: {
+    fontFamily: 'Roboto-MediumItalic',
+    //fontStyle: 'italic',
     paddingHorizontal: 7,
     fontSize: 16,
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
     marginTop: 13,
   },
 

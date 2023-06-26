@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
   StyleSheet,
+  Text,
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -23,18 +24,20 @@ const Help = () => {
 
   return (
     <Center w="100%">
-      <Box safeArea py="40" w="90%" maxW="300">
+      <Box safeArea py="32" w="90%" maxW="300">
         <Heading
           size="2xl"
           fontWeight="700"
           color="coolGray.800"
+          fontFamily= "Roboto-Medium"
           alignSelf="center"
           _dark={{
             color: 'warmGray.50',
           }}>
-          HELP
+         You got a problem?
         </Heading>
-        <VStack space={3} mt="5">
+        <VStack space={3} mt="10">
+         
         <TextArea
           value={subject}
           onChangeText={setSubject}
@@ -74,12 +77,30 @@ const Help = () => {
             },
           }}
         />
-       
-          <TouchableOpacity>
-            <Button onPress={() => handleSend()} mt="10" colorScheme="indigo">
-              Send Help request
-            </Button>
-          </TouchableOpacity>
+        </VStack>
+        <VStack space={3} mt="16">
+       <TouchableOpacity
+              onPress={() =>handleSend()}
+              style={{
+                backgroundColor: '#AD40AF',
+                padding: 17,
+                width: '100%',
+                height: 55,
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                
+              }}>
+              <Text
+                style={{
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                 Send Help request
+              </Text>
+            </TouchableOpacity>
         </VStack>
       </Box>
     </Center>

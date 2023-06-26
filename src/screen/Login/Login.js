@@ -56,8 +56,9 @@ const Login = () => {
           <VStack space={1}>
             <Heading
               size="2xl"
-              fontWeight="700"
-              color="coolGray.800"
+              fontWeight="light"
+              fontFamily={'Roboto-BoldItalic'}
+              //color="coolGray.800"
               _dark={{
                 color: 'warmGray.50',
               }}>
@@ -68,6 +69,7 @@ const Login = () => {
               _dark={{
                 color: 'warmGray.200',
               }}
+              fontFamily={'BacasimeAntique-Regular'}
               color="coolGray.600"
               fontWeight="500"
               size="sm">
@@ -99,7 +101,7 @@ const Login = () => {
 
             <Text
               style={{
-                fontFamily: 'Roboto-Medium',
+                fontFamily: 'Roboto-MediumItalic',
                 fontSize: 28,
                 fontWeight: '600',
                 color: '#333',
@@ -123,6 +125,7 @@ const Login = () => {
                 style={{marginRight: 5}}
               />
               <TextInput
+              fontFamily={'Roboto-BoldItalic'}
                 placeholder="Username"
                 style={{flex: 1, paddingVertical: 0}}></TextInput>
             </View>
@@ -142,12 +145,13 @@ const Login = () => {
                 style={{marginRight: 5}}
               />
               <TextInput
+               fontFamily={'Roboto-BoldItalic'}
                 placeholder="Password"
                 style={{flex: 1, paddingVertical: 0}}
                 secureTextEntry={true}></TextInput>
 
               <TouchableOpacity onPress={onForgotPasswordPressed}>
-                <Text style={{color: '#AD40AF', fontWeight: '800'}}>
+                <Text style={{color: '#AD40AF',  fontFamily:'Roboto-BoldItalic',fontWeight: '800'}}>
                   Forgot?
                 </Text>
               </TouchableOpacity>
@@ -167,7 +171,6 @@ const Login = () => {
               <Text
                 style={{
                   fontSize: 18,
-                  fontWeight: 'bold',
                   color: '#fff',
                   fontFamily: 'Roboto-MediumItalic',
                 }}>

@@ -70,14 +70,29 @@ const SmartDeviceControl = () => {
             size="md">
             Device state: {deviceStatus}
           </Heading>
-          <TouchableOpacity>
-            <Button
-              onPress={() => toggleDeviceStatus()}
-              mt="5"
-              colorScheme="indigo">
-              {deviceStatus === 'on' ? 'Off' : 'On'}
-            </Button>
-          </TouchableOpacity>
+
+          <TouchableOpacity
+               onPress={() => toggleDeviceStatus()}
+              style={{
+                backgroundColor: '#AD40AF',
+                padding: 15,
+                width: '100%',
+                height: '10%',
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginBottom: 20,
+              }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                {deviceStatus === 'on' ? 'Off' : 'On'}
+              </Text>
+            </TouchableOpacity>
+
           <Heading
             size="md"
             mt="5"
@@ -100,35 +115,75 @@ const SmartDeviceControl = () => {
             }}>
             {deviceTemperature}°C
           </Heading>
-          <TouchableOpacity>
-            <Button
-              onPress={() => increaseTemperature()}
-              mt="5"
-              colorScheme="indigo">
-              <Icon
-                style={styles.arrowContainer}
+
+          <TouchableOpacity
+               onPress={() => increaseTemperature()}
+              style={{
+                backgroundColor: '#AD40AF',
+                padding: 17,
+                width: '100%',
+                height: '12%',
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginBottom: 20,
+              }}>
+                 <Icon
                 name={'arrow-up'}
                 size={20}
-                color="#000"
+                color="white"
               />
-              Increase temperature
-            </Button>
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Button
-              onPress={() => decreaseTemperature()}
-              mt="5"
-              colorScheme="indigo">
-              Decrease temperature
+              <Text
+                style={{
+                  paddingEnd: 25,
+                  paddingStart: 25,
+                  fontSize: 18,
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                  Increase temperature
+              </Text>
               <Icon
-                style={styles.arrowContainer}
+                name={'arrow-up'}
+                size={20}
+                color="white"
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                   onPress={() => decreaseTemperature()}
+              style={{
+                backgroundColor: '#AD40AF',
+                padding: 17,
+                width: '100%',
+                height: '12%',
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginBottom: 20,
+              }}>
+                <Icon
                 name={'arrow-down'}
                 size={20}
-                color="#000"
+                color="white"
               />
-            </Button>
-          </TouchableOpacity>
+              <Text
+                style={{
+                  paddingEnd: 25,
+                  paddingStart: 25,
+                  fontSize: 18,
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                  Increase temperature
+              </Text>
+              <Icon
+                name={'arrow-down'}
+                size={20}
+                color="white"
+              />
+            </TouchableOpacity>
+
         </VStack>
       </Box>
     </Center>
@@ -136,9 +191,7 @@ const SmartDeviceControl = () => {
 };
 
 const styles = {
-  arrowContainer: {
-    alignSelf: 'center',
-  },
+ 
 };
 
 export default SmartDeviceControl;

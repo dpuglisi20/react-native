@@ -12,13 +12,15 @@ import {
 } from 'native-base';
 import {Picker} from '@react-native-picker/picker';
 
-import {
-  PieChart, 
-} from 'react-native-chart-kit';
+import { Drawer } from 'react-native-paper';
+import {BarChart, PieChart} from 'react-native-chart-kit';
 
+import {Dimensions} from 'react-native';
 
 const SmartDeviceControl = () => {
   const navigation = useNavigation();
+
+  const screenWidth = Dimensions.get('window').width;
 
   const [selectedCategory, setSelectedCategory] = useState('');
   const [filteredData, setFilteredData] = useState([]);
@@ -115,10 +117,9 @@ const SmartDeviceControl = () => {
     if (filteredData.length > 0) {
       return (
         <Center w="100%">
-          <Box safeArea py="30" w="90%" maxW="300">
+          <Box safeArea py="24" w="90%" maxW="300">
             {' '}
             {/* PUT PY = 40 TO MOVE EVERYTHING TO THE CENTER OF THE PAGE */}
-
             <View style={styles.container}>
               <Picker
                 selectedValue={selectedCategory}
@@ -131,17 +132,20 @@ const SmartDeviceControl = () => {
               </Picker>
             </View>
             <VStack space={4} mt="5">
+            <Drawer.Section style={styles.bottomDrawerSection}></Drawer.Section>
               <Heading
                 size="lg"
                 fontWeight="600"
                 alignSelf={'center'}
                 color="coolGray.800"
+                fontFamily={'Roboto-MediumItalic'}
                 _dark={{
                   color: 'warmGray.50',
                 }}>
                 Filter devices for category:
               </Heading>
-              <Heading
+              
+             {/*  <Heading
                 size="xl"
                 fontWeight="600"
                 alignSelf={'center'}
@@ -150,11 +154,11 @@ const SmartDeviceControl = () => {
                   color: 'warmGray.50',
                 }}>
                 "{selectedCategory}"
-              </Heading>
+              </Heading> */}
             </VStack>
+           
             {filteredData.map(device => (
-              <VStack space={2} mt="2">
-                
+              <VStack space={2} mt="4">
                 <TouchableOpacity
                   key={device.id}
                   style={styles.deviceItem}
@@ -172,14 +176,13 @@ const SmartDeviceControl = () => {
                 Go Back
               </Button>
             </TouchableOpacity> */}
-            
           </Box>
         </Center>
       );
     } else {
       return (
         <Text style={styles.noDataText}>
-           No data to display for this category
+          No data to display for this category
         </Text>
       );
     }
@@ -215,10 +218,8 @@ const SmartDeviceControl = () => {
                   <Picker.Item label="Category C" value="Category C" />
                 </Picker>
               </View>
-
               <View>
-                
-      <PieChart
+               <PieChart
         data={deviceData}
         width={300}
         height={200}
@@ -229,14 +230,17 @@ const SmartDeviceControl = () => {
           decimalPlaces: 2,
           color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
         }}
+        
         accessor="power"
         backgroundColor="transparent"
         paddingLeft="15"
         absolute
-      />
-      <Text paddingHorizontal={40} fontSize={15} fontWeight={'bold'}>Active devices</Text>
-    </View>
-
+      /> 
+                
+                <Text paddingHorizontal={40} fontSize={15} fontWeight={'bold'}>
+                  Active devices
+                </Text>
+              </View>
               <VStack space={4} mt="5">
                 <VStack space={3} mt="10">
                   {deviceData.map(device => (
@@ -273,10 +277,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     paddingVertical: 15,
-    borderRadius: 5,
-    backgroundColor: '#f2f2f2',
+    borderRadius: 10,
     backgroundColor: '#fff',
   },
   deviceName: {
@@ -286,6 +289,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#4287f5',
+  },
+  picker: {
+    fontFamily:"Roboto-Black",
+    color: 'black',
+  },
+  bottomDrawerSection: {
+   
+    marginTop: -15,
+    marginBottom: 20,
   },
 });
 export default SmartDeviceControl;
