@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 //-- ALL GRAPHICS TO USE --//
 //-- PER ORA IO HO SCELTO LINECHART --//
@@ -12,7 +13,7 @@ import {
   StackedBarChart,
 } from 'react-native-chart-kit';
 
-import {Center, Heading, VStack, Button, Box} from 'native-base';
+import {Center, Heading, VStack, Button, Box, Text} from 'native-base';
 
 import {Dimensions} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -50,12 +51,12 @@ const DeviceData = () => {
 
   return (
     <Center w="100%">
-      <Box safeArea p="2" py="40" w="90%" maxW="300">
+      <Box safeArea py="32" w="90%" maxW="400">
         <Heading
-          size="2xl"
-          alignSelf={'center'}
-          fontWeight="600"
-          color="coolGray.800"
+           size="2xl"
+           fontWeight="light"
+           fontFamily={'Roboto-BoldItalic'}
+           alignSelf={'center'}
           _dark={{
             color: 'warmGray.50',
           }}>
@@ -73,13 +74,12 @@ const DeviceData = () => {
                 },
               ],
             }}
-            width={300}
-            height={200}
+            width={350}
+            height={220}
             yAxisSuffix=""
             chartConfig={{
-              backgroundColor: '#e26a00',
-              backgroundGradientFrom: '#fb8c00',
-              backgroundGradientTo: '#ffa726',
+              backgroundGradientFrom: '#4287f5',
+              backgroundGradientTo: '#0b5bda',
               decimalPlaces: 2,
               color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             }}
@@ -87,35 +87,52 @@ const DeviceData = () => {
             style={styles.chart}
           />
         }
-        <TouchableOpacity>
-          <Button
-            onPress={() => handleCalculateKPI()}
-            mt="5"
-            colorScheme="indigo">
-            Calculate
-          </Button>
-        </TouchableOpacity>
         <Heading
           mt="4"
           alignSelf={'center'}
           _dark={{
             color: 'warmGray.200',
           }}
-          color="coolGray.600"
-          fontWeight="medium"
+        
+            fontWeight="light"
+            fontFamily={'Roboto-MediumItalic'}
+         
           size="md">
           KPI: {kpi}
         </Heading>
-
-        <VStack space={3} mt="10">
-          {/* <TouchableOpacity>
-            <Button
-              onPress={() => navigation.navigate('HomeScreen')}
-              mt="5"
-              colorScheme="indigo">
-              Go Back
-            </Button>
-          </TouchableOpacity> */}
+        <VStack mt="7">
+          <TouchableOpacity
+            onPress={() => handleCalculateKPI()}
+            style={{
+              backgroundColor: '#AD40AF',
+              padding: 12,
+              alignSelf: 'center',
+              width: '80%',
+              height: '30%',
+              borderRadius: 10,
+              flexDirection: 'row',
+              justifyContent: 'center',
+              //marginBottom: -200,
+              //marginTop: -15,
+            }}>
+            <Icon
+              name={'key'}
+              paddingVertical={1}
+              size={17}
+              color={'white'}
+              style={{
+                width: '12%',
+              }}
+            />
+            <Text
+              style={{
+                fontSize: 18,
+                color: '#fff',
+                fontFamily: 'Roboto-MediumItalic',
+              }}>
+              Calculate
+            </Text>
+          </TouchableOpacity>
         </VStack>
       </Box>
     </Center>

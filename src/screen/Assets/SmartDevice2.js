@@ -1,15 +1,21 @@
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Center, Heading, VStack, Button, Text, Box} from 'native-base';
+import {Center, Heading, VStack, Text, Box, View} from 'native-base';
+import Pie from 'react-native-pie';
+import {StyleSheet} from 'react-native';
 
-const SmartDeviceControl = () => {
+const SmartDevice2 = () => {
   const [deviceStatus, setDeviceStatus] = useState('on');
   const [deviceTemperature, setDeviceTemperature] = useState(20);
+  const [color, setColor] = useState('green');
 
   const toggleDeviceStatus = () => {
     const newStatus = deviceStatus === 'off' ? 'on' : 'off';
     setDeviceStatus(newStatus);
+    if (newStatus == 'off') {
+      setColor('red');
+    } else setColor('green');
     //-- SIMULATE SENDING THE API REQUEST TO UPDATE THE DEVICE STATE --//
     simulateDeviceAPIRequest({
       status: newStatus,
@@ -47,98 +53,206 @@ const SmartDeviceControl = () => {
 
   return (
     <Center w="100%">
-      <Box safeArea py="40" w="90%" maxW="300">
-        <VStack space={4} mt="5">
+      <Box py="24" w="xl" maxW="full">
+        <VStack space={4} mt="0">
           <Heading
             size="2xl"
-            fontWeight="600"
+            fontWeight="light"
+            fontFamily={'Roboto-BoldItalic'}
             alignSelf={'center'}
+            marginLeft={-12}
             color="coolGray.800"
             _dark={{
               color: 'warmGray.50',
             }}>
-            Smart device 2
+            Thermostat 2
           </Heading>
-          <Heading
-            mt="4"
-            alignSelf={'center'}
-            color="coolGray.600"
-            _dark={{
-              color: 'warmGray.500',
-            }}
-            fontWeight="medium"
-            size="md">
-            Device state: {deviceStatus}
-          </Heading>
-          <TouchableOpacity>
-            <Button
-              onPress={() => toggleDeviceStatus()}
-              mt="5"
-              colorScheme="indigo">
-              {deviceStatus === 'on' ? 'Off' : 'On'}
-            </Button>
-          </TouchableOpacity>
+          <Icon
+            name={'circle'}
+            size={30}
+            color={color}
+            paddingStart={310}
+            marginTop={-53}
+          />
           <Heading
             size="md"
             mt="5"
             fontWeight="600"
             alignSelf={'center'}
+            fontFamily={'Roboto-MediumItalic'}
             color="coolGray.600"
             _dark={{
               color: 'warmGray.500',
             }}>
             The device temperature is:
           </Heading>
-          <Heading
-            size="md"
-            mt="1"
-            fontWeight="600"
-            alignSelf={'center'}
-            color="coolGray.600"
-            _dark={{
-              color: 'warmGray.500',
-            }}>
-            {deviceTemperature}°C
-          </Heading>
-          <TouchableOpacity>
-            <Button
-              onPress={() => increaseTemperature()}
-              mt="5"
-              colorScheme="indigo">
-              <Icon
-                style={styles.arrowContainer}
-                name={'arrow-up'}
-                size={20}
-                color="#000"
+          <VStack space={4} mt="3">
+            <Text style={{alignSelf: 'center', fontFamily: 'Roboto-Light'}}>
+              0 °C
+            </Text>
+            <View
+              style={{
+                //flexDirection: 'row',
+                //height:500,
+                alignItems: 'center',
+              }}>
+              <Pie
+                radius={120}
+                innerRadius={105}
+                sections={[
+                  {
+                    percentage: deviceTemperature,
+                    color: '#4287f5',
+                  },
+                ]}
+                backgroundColor="#ddd"
               />
-              Increase temperature
-            </Button>
-          </TouchableOpacity>
+              <View style={styles.gauge}>
+                <Text style={styles.gaugeText}> {deviceTemperature}</Text>
+                <Text style={styles.text}> °C</Text>
+              </View>
+            </View>
 
-          <TouchableOpacity>
-            <Button
+            <View>
+              <Text
+                style={{
+                  marginVertical: -50,
+                  textAlign: 'right',
+                  marginRight: 30,
+                  fontFamily: 'Roboto-Light',
+                }}>
+                25 °C
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  marginVertical: 80,
+                  fontFamily: 'Roboto-Light',
+                }}>
+                50 °C
+              </Text>
+            </View>
+          </VStack>
+
+          <VStack
+            space={'xl'}
+            mt="-9"
+            style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <TouchableOpacity
               onPress={() => decreaseTemperature()}
-              mt="5"
-              colorScheme="indigo">
-              Decrease temperature
+              style={{
+                backgroundColor: 'white',
+                //padding: 14,
+                width: '16%',
+                height: '36%',
+
+                borderRadius: 100,
+                marginStart: 55,
+                justifyContent: 'center',
+
+                //marginBottom: 20,
+              }}>
               <Icon
-                style={styles.arrowContainer}
-                name={'arrow-down'}
-                size={20}
-                color="#000"
+                name={'minus'}
+                size={30}
+                color="#5593f6"
+                style={{
+                  justifyContent: 'center',
+                  alignSelf: 'center',
+                }}
               />
-            </Button>
-          </TouchableOpacity>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => increaseTemperature()}
+              style={{
+                backgroundColor: 'white',
+
+                width: '16%',
+                height: '36%',
+                borderRadius: 100,
+                marginEnd: 55,
+
+                justifyContent: 'center',
+                //marginBottom: 20,
+              }}>
+              <Icon
+                name={'plus'}
+                size={30}
+                color="#5593f6"
+                style={{
+                  justifyContent: 'center',
+                  alignSelf: 'center',
+                }}
+              />
+            </TouchableOpacity>
+          </VStack>
+          <VStack mt="-24">
+            <TouchableOpacity
+              onPress={() => toggleDeviceStatus()}
+              style={{
+                backgroundColor: '#AD40AF',
+                padding: 20,
+                alignSelf: 'center',
+                width: '90%',
+                height: '27%',
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                //marginBottom: -200,
+                //marginTop: -15,
+              }}>
+              <Icon
+                name={'power-off'}
+                size={20}
+                color={'white'}
+                style={{
+                  width: '10%',
+                }}
+              />
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                {deviceStatus === 'on' ? 'Turn Off' : 'Turn On'}
+              </Text>
+            </TouchableOpacity>
+          </VStack>
         </VStack>
       </Box>
     </Center>
   );
 };
 
-const styles = {
-  arrowContainer: {
-    alignSelf: 'center',
-  },
-};
+const styles = StyleSheet.create({
+  gauge: {
+    //position: 'absolute',
+    //width:180,
+    marginTop: -140,
+    alignItems: 'center',
+    //justifyContent:'center',
 
-export default SmartDeviceControl;
+    flexDirection: 'row',
+  },
+  gaugeText: {
+    paddingTop: 20,
+    //backgroundColor:'red',
+    color: '#000',
+    fontSize: 40,
+    //height:50,
+    fontFamily: 'Roboto-Black',
+  },
+  text: {
+    paddingTop: 9,
+    color: 'grey',
+    fontSize: 20,
+    //height:50,
+    fontFamily: 'Roboto-Regular',
+  },
+});
+
+export default SmartDevice2;

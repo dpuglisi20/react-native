@@ -1,87 +1,112 @@
-import React, {useState} from 'react';
-import {TouchableOpacity, StyleSheet, View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+
+import {FlatGrid} from 'react-native-super-grid';
+
+import {TouchableOpacity, StyleSheet, View, Button, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {
-  Center,
-  Heading,
-  VStack,
-  Button,
-  Text,
-  Box,
-  ScrollView,
-} from 'native-base';
+import {Center, Heading, VStack, Box, ScrollView} from 'native-base';
 import {Picker} from '@react-native-picker/picker';
 
-import { Drawer } from 'react-native-paper';
+import {Drawer} from 'react-native-paper';
 import {BarChart, PieChart} from 'react-native-chart-kit';
 
 import {Dimensions} from 'react-native';
+
+import CategorySelector from '../../components/CategorySelector/CategorySelector';
+import DeviceGrid from '../../components/DeviceGrid/DeviceGrid';
 
 const SmartDeviceControl = () => {
   const navigation = useNavigation();
 
   const screenWidth = Dimensions.get('window').width;
 
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('1');
   const [filteredData, setFilteredData] = useState([]);
+  const [color, setColor] = useState('red');
+  const [flag, setFlag] = useState(false);
+
+  useEffect(() => {
+    if (flag == true) {
+      setColor('indigo');
+      
+    } else {
+    }
+  }, [flag]);
 
   const deviceData = [
     {
       id: 1,
-      name: 'Device 1',
-      category: 'Category A',
+      name: 'Therm 1',
+      category: 'Thermo',
       status: 'Off',
       power: 0,
       color: '#F44336',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15,
+      icon: 'thermometer-full',
+      description: 'My Home Therm',
     },
     {
       id: 2,
-      name: 'Device 2',
-      category: 'Category B',
+      name: 'Therm 2',
+      category: 'Thermo',
       status: 'On',
       power: 1,
       color: '#2196F3',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15,
+      icon: 'thermometer-full',
+      description: 'My 2 Home Therm',
     },
     {
       id: 3,
-      name: 'Device 3',
+      name: 'Light 1',
       category: 'Category A',
       status: 'Not initialized',
       power: 0,
       color: '#FFEB3B',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15,
+      icon: 'lightbulb-o',
+      description: 'Wyze Bulb, 1 Lights',
     },
     {
       id: 4,
-      name: 'Device 4',
-      category: 'Category C',
-      status: 'Not initialized',
-      power: 0,
+      name: 'Speaker',
+      category: 'Speaker',
+      status: 'On',
+      power: 1,
       color: '#4CAF50',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15,
+      icon: 'volume-up',
+      description: 'Google Nest Audio',
     },
     {
       id: 5,
-      name: 'Device 5',
-      category: 'Category B',
+      name: 'Smart TV',
+      category: 'Smart TV',
       status: 'Not initialized',
       power: 0,
       color: '#FF9800',
       legendFontColor: '#7F7F7F',
       legendFontSize: 15,
+      icon: 'tv',
+      description: 'Samsung QN900B',
+    },
+    {
+      id: 6,
+      name: 'Therm 3',
+      category: 'Thermo',
+      status: 'On',
+      power: 1,
+      color: '#b30086',
+      legendFontColor: '#7F7F7F',
+      legendFontSize: 15,
+      icon: 'thermometer-full',
+      description: 'Garden Therm',
     },
   ];
-
-  const handleCategoryChange = category => {
-    setSelectedCategory(category);
-    filterData(category);
-  };
 
   const filterData = category => {
     const filteredDevices = deviceData.filter(
@@ -94,33 +119,50 @@ const SmartDeviceControl = () => {
     navigation.navigate('Menu');
   }; */
 
-  const handleDevicePress = id => {
-    switch (id) {
-      case 1:
-        navigation.navigate('SmartDevice');
-        console.log('Redirect to Device 1');
-        break;
-      case 2:
-        navigation.navigate('SmartDevice2');
-        console.log('Redirect to Device 2');
-        break;
-      case 3:
-        //navigation.navigate('SmartDevice3');
-        // console.log('Redirect to Device 3');
-        break;
-      default:
-        break;
-    }
+  
+
+  const handleCategorySelect = categoryId => {
+    setSelectedCategory(categoryId);
+    setFlag(true);
   };
 
-  const renderFilteredData = () => {
-    if (filteredData.length > 0) {
-      return (
-        <Center w="100%">
-          <Box safeArea py="24" w="90%" maxW="300">
-            {' '}
-            {/* PUT PY = 40 TO MOVE EVERYTHING TO THE CENTER OF THE PAGE */}
-            <View style={styles.container}>
+  const getDevicesByCategory = () => {
+    
+    const devicesByCategory = {
+      1: [deviceData[0], deviceData[1],deviceData[5]],
+      2: [deviceData[2]],
+      3: [deviceData[3]],
+      4: [deviceData[4]],
+    };
+    return devicesByCategory[selectedCategory] || [];
+  };
+
+  const categories = [
+    {id: 1, name: 'Thermo'},
+    {id: 2, name: 'Lights'},
+    {id: 3, name: 'Speaker'},
+    {id: 4, name: 'Smart TV'},
+   
+  ];
+
+  return (
+    <>
+      {/* <ScrollView w={['390', '500']} h="80"> */}
+      <Center w="100%">
+        <Box safeArea py="30" w="90%" maxW="full">
+          {' '}
+          <Heading
+            size="2xl"
+            fontWeight="light"
+            fontFamily={'Roboto-BoldItalic'}
+            alignSelf={'center'}
+            color="coolGray.800"
+            _dark={{
+              color: 'warmGray.50',
+            }}>
+            DEVICE STATES
+          </Heading>
+          {/*  <View style={styles.container}>
               <Picker
                 selectedValue={selectedCategory}
                 onValueChange={itemValue => handleCategoryChange(itemValue)}
@@ -130,147 +172,65 @@ const SmartDeviceControl = () => {
                 <Picker.Item label="Category B" value="Category B" />
                 <Picker.Item label="Category C" value="Category C" />
               </Picker>
-            </View>
-            <VStack space={4} mt="5">
-            <Drawer.Section style={styles.bottomDrawerSection}></Drawer.Section>
-              <Heading
-                size="lg"
-                fontWeight="600"
-                alignSelf={'center'}
-                color="coolGray.800"
-                fontFamily={'Roboto-MediumItalic'}
-                _dark={{
-                  color: 'warmGray.50',
-                }}>
-                Filter devices for category:
-              </Heading>
-              
-             {/*  <Heading
-                size="xl"
-                fontWeight="600"
-                alignSelf={'center'}
-                color="coolGray.800"
-                _dark={{
-                  color: 'warmGray.50',
-                }}>
-                "{selectedCategory}"
-              </Heading> */}
-            </VStack>
-           
-            {filteredData.map(device => (
-              <VStack space={2} mt="4">
-                <TouchableOpacity
-                  key={device.id}
-                  style={styles.deviceItem}
-                  onPress={() => handleDevicePress(device.id)}>
-                  <Text style={styles.deviceName}>{device.name}</Text>
-                  <Text style={styles.deviceStatus}>{device.status}</Text>
-                </TouchableOpacity>
-              </VStack>
-            ))}
-            {/* <TouchableOpacity>
-              <Button
-                onPress={() => navigation.navigate('Menu')}
-                mt="10"
-                colorScheme="indigo">
-                Go Back
-              </Button>
-            </TouchableOpacity> */}
-          </Box>
-        </Center>
-      );
-    } else {
-      return (
-        <Text style={styles.noDataText}>
-          No data to display for this category
-        </Text>
-      );
-    }
-  };
-  const renderContent = () => {
-    if (selectedCategory !== '') {
-      return <View style={styles.container}>{renderFilteredData()}</View>;
-    } else {
-      return (
-        <ScrollView w={['390', '500']} h="80">
-          <Center w="100%">
-            <Box safeArea py="30" w="90%" maxW="300">
-              {' '}
-              {/* PUT PY = 40 TO MOVE EVERYTHING TO THE CENTER OF THE PAGE */}
-              <Heading
-                size="2xl"
-                fontWeight="600"
-                alignSelf={'center'}
-                color="coolGray.800"
-                _dark={{
-                  color: 'warmGray.50',
-                }}>
-                DEVICE STATES
-              </Heading>
-              <View style={styles.container}>
-                <Picker
-                  selectedValue={selectedCategory}
-                  onValueChange={itemValue => handleCategoryChange(itemValue)}
-                  style={styles.picker}>
-                  <Picker.Item label="Select a category" value="" />
-                  <Picker.Item label="Category A" value="Category A" />
-                  <Picker.Item label="Category B" value="Category B" />
-                  <Picker.Item label="Category C" value="Category C" />
-                </Picker>
-              </View>
-              <View>
-               <PieChart
-        data={deviceData}
-        width={300}
-        height={200}
-        chartConfig={{
-          backgroundColor: '#ffffff',
-          backgroundGradientFrom: '#ffffff',
-          backgroundGradientTo: '#ffffff',
-          decimalPlaces: 2,
-          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-        }}
-        
-        accessor="power"
-        backgroundColor="transparent"
-        paddingLeft="15"
-        absolute
-      /> 
-                
-                <Text paddingHorizontal={40} fontSize={15} fontWeight={'bold'}>
-                  Active devices
-                </Text>
-              </View>
-              <VStack space={4} mt="5">
-                <VStack space={3} mt="10">
-                  {deviceData.map(device => (
-                    <TouchableOpacity
-                      key={device.id}
-                      style={styles.deviceItem}
-                      onPress={() => handleDevicePress(device.id)}>
-                      <Text style={styles.deviceName}>{device.name}</Text>
-                      <Text style={styles.deviceStatus}>{device.status}</Text>
-                    </TouchableOpacity>
-                  ))}
-                </VStack>
-                {/* <TouchableOpacity>
-                  <Button
-                    onPress={() => onGoBackPressed()}
-                    mt="10"
-                    colorScheme="indigo">
-                    Go Back
-                  </Button>
-                </TouchableOpacity> */}
-              </VStack>
-            </Box>
-          </Center>
-        </ScrollView>
-      );
-    }
-  };
-  return renderContent();
-};
+            </View> */}
+          <View>
+            <PieChart
+              data={deviceData}
+              width={350}
+              height={200}
+              chartConfig={{
+                backgroundColor: '#ffffff',
+                backgroundGradientFrom: '#ffffff',
+                backgroundGradientTo: '#ffffff',
+                decimalPlaces: 2,
+                color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+              }}
+              accessor="power"
+              backgroundColor="transparent"
+              paddingLeft="15"
+              absolute
+            />
 
+            <Text style={{fontFamily: 'Roboto-Black', paddingHorizontal:55, fontSize:14, marginTop: -15}} >
+              Armed devices
+            </Text>
+          </View>
+          <View>
+            <CategorySelector
+              categories={categories}
+              onSelectCategory={handleCategorySelect}
+            />
+
+            {selectedCategory && (
+              <DeviceGrid devices={getDevicesByCategory()} />
+            )}
+
+            {console.log(
+              'Categoria selezionata: ',
+              selectedCategory,
+              '-- Stato: ',
+              flag,
+            )}
+          </View>
+          {/*  <VStack space={4} mt="5">
+              <VStack space={3} mt="10">
+                {deviceData.map(device => (
+                  <TouchableOpacity
+                    key={device.id}
+                    style={styles.deviceItem}
+                    onPress={() => handleDevicePress(device.id)}>
+                    <Text style={styles.deviceName}>{device.name}</Text>
+                    <Text style={styles.deviceStatus}>{device.status}</Text>
+                  </TouchableOpacity>
+                ))}
+              </VStack>
+            </VStack> */}
+        </Box>
+      </Center>
+      {/*  </ScrollView> */}
+    </>
+  );
+};
 const styles = StyleSheet.create({
   deviceItem: {
     flexDirection: 'row',
@@ -291,13 +251,13 @@ const styles = StyleSheet.create({
     color: '#4287f5',
   },
   picker: {
-    fontFamily:"Roboto-Black",
+    fontFamily: 'Roboto-Black',
     color: 'black',
   },
   bottomDrawerSection: {
-   
     marginTop: -15,
     marginBottom: 20,
   },
 });
+
 export default SmartDeviceControl;

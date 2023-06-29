@@ -16,6 +16,8 @@ import Help from '../screen/HelpAndFeedBack/Help';
 import SmartDeviceControl from '../screen/Assets/SmartDeviceControl';
 import SmartDevice from '../screen/Assets/SmartDevice';
 import SmartDevice2 from '../screen/Assets/SmartDevice2';
+import SmartDevice3 from '../screen/Assets/SmartDevice3';
+import SpeakerDevice from '../screen/Assets/SpeakerDevice';
 import AlarmControl from '../screen/Alarms/AlarmControl';
 import AlarmControl2 from '../screen/Alarms/AlarmControl2';
 import AlarmStatus from '../screen/Alarms/AlarmStatus';
@@ -52,6 +54,8 @@ const Navigation = () => {
       <Stack.Screen name='SmartDeviceControl' component={SmartDeviceControl}/>
       <Stack.Screen name='SmartDevice' component={SmartDevice}/>
       <Stack.Screen name='SmartDevice2' component={SmartDevice2}/>
+      <Stack.Screen name='SmartDevice3' component={SmartDevice3}/>
+      <Stack.Screen name='SpeakerDevice' component={SpeakerDevice}/>
       <Stack.Screen name='AlarmStatus' component={AlarmStatus}/>
       <Stack.Screen name='AlarmControl' component={AlarmControl}/>
       <Stack.Screen name='AlarmControl2' component={AlarmControl2}/>

@@ -9,6 +9,7 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] C:\Users\dpugl
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\7eff0e62afc088f3660c0611bd88de2c\transformed\jetified-flipper-fresco-plugin-0.125.0\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\a96b3417c959a47cd29eb1baf5d2b0ce\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:8:1-18:12
 MERGED from [:notifee_react-native] C:\Progetti\project-react-native\react-native-new\node_modules\@notifee\react-native\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [:react-native-community_art] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-community\art\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-firebase_auth] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-firebase\auth\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-13:12
 MERGED from [:react-native-firebase_messaging] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-45:12
 MERGED from [:react-native-firebase_app] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-32:12
@@ -349,6 +350,8 @@ MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\dpuglisi\.gradle\cac
 MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\dpuglisi\.gradle\caches\transforms-3\a96b3417c959a47cd29eb1baf5d2b0ce\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:11:5-13:41
 MERGED from [:notifee_react-native] C:\Progetti\project-react-native\react-native-new\node_modules\@notifee\react-native\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:notifee_react-native] C:\Progetti\project-react-native\react-native-new\node_modules\@notifee\react-native\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_art] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-community\art\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_art] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-community\art\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-firebase_auth] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-firebase\auth\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-firebase_auth] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-firebase\auth\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-firebase_messaging] C:\Progetti\project-react-native\react-native-new\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41

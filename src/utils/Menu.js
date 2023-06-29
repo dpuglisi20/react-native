@@ -3,6 +3,7 @@ import {TouchableOpacity, StyleSheet, View} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import { useWindowDimensions } from 'react-native';
 
 import CustomDrawer from '../components/CustomDrawer/CustomDrawer';
 
@@ -22,18 +23,24 @@ import CameraStatus from '../screen/Webcam/CameraStatus';
 import HelpAndFeedback from '../screen/HelpAndFeedBack/HelpAndFeedback';
 import AgendaPage from '../screen/Event/AgendaPage';
 
+
+
 const Drawer = createDrawerNavigator();
 
 const Menu = () => {
+
+  const dimensions = useWindowDimensions();
+
   return (
     <Drawer.Navigator
       drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{
+        
         headerShown: true,
         drawerActiveBackgroundColor: '#4287f5',
         drawerActiveTintColor: '#fff',
         drawerInactiveTintColor: '#333',
-
+        drawerType: dimensions.width >= 768 ? 'permanent' : 'front',
         drawerLabelStyle: {marginLeft: -20, fontSize: 15},
       }}>
       <Drawer.Screen

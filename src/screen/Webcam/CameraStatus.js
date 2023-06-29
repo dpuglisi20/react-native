@@ -15,6 +15,7 @@ import {
 import {CameraModal} from '../../components';
 import {GlobalContext} from './GlobalState';
 import CameraCard from './CameraCard';
+import CamImg from '../../../assets/cam.svg';
 
 const initialState = {
   id: null,
@@ -93,9 +94,18 @@ const CameraStatus = () => {
     <Center w="100%">
       <Box safeArea py="40" w="90%" maxW="300">
         <VStack space={4} mt="5">
+       
+            <CamImg
+              width={300}
+              height={350}
+              style={{marginLeft:145, marginTop:-280,marginBottom:-120}}
+            />
+     
           <Heading
             size="2xl"
             fontWeight="600"
+    
+              fontFamily={'Roboto-BoldItalic'}
             alignSelf={'center'}
             color="coolGray.800"
             _dark={{

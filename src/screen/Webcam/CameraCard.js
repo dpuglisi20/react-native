@@ -7,7 +7,6 @@ import {HStack, Pressable} from 'native-base';
 const CameraDevices = props => {
   const {removeCam} = useContext(GlobalContext);
 
-  const [color, setColor] = useState('red');
   const bgColor = 'white';
 
   const [isVisibleModal, setIsVisibleModal] = useState(false);

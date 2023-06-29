@@ -142,7 +142,7 @@ const HomeScreen = () => {
               <Text style={styles.pageName}>{page.name}</Text>
             </TouchableOpacity>
           ))}
-        </VStack>,
+        </VStack>
       );
     }
     return buttonRows;
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   pageName: {
     fontFamily: 'Roboto-MediumItalic',
     //fontStyle: 'italic',
-    paddingHorizontal: 7,
+    paddingHorizontal: 10,
     fontSize: 16,
     //fontWeight: 'bold',
     marginTop: 13,
@@ -190,6 +190,7 @@ const styles = StyleSheet.create({
     width: '48%', // Larghezza del bottone (48% per lasciare spazio tra i bottoni)
     marginBottom: -70, // Spazio tra le righe
     backgroundColor: '#fff',
+    borderRadius: 15,
   },
 });
 
