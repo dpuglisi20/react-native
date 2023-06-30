@@ -1,4 +1,4 @@
-import {Text} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {GlobalContext} from '../../screen/Maintenance/GlobalState';
 import {
@@ -14,7 +14,10 @@ import {
   Button,
 } from 'native-base';
 
+import Icons from 'react-native-vector-icons/FontAwesome';
+
 import DocumentPicker from 'react-native-document-picker';
+
 const initialState = {
   id: null,
   text: '',
@@ -29,7 +32,7 @@ const TaskCard = props => {
   const [textNote, setTextNote] = useState('');
   const [signature, setSignature] = useState('');
   const [color, setColor] = useState('red');
-  const bgColor = colorMode === 'dark' ? 'primary.800' : 'primary.200';
+  const bgColor = colorMode === 'dark' ? 'primary.800' : 'white';
   const {item, handleTaskCardPressed} = props;
   const [buttonDisable, setButtonDisable] = useState(false);
 
@@ -114,7 +117,7 @@ const TaskCard = props => {
   };
   return (
     <>
-      <Pressable onPress={() => handleTaskCardPressed(item)}>
+      <TouchableOpacity onPress={() => handleTaskCardPressed(item)}>
         <HStack
           flexWrap={'wrap'}
           py={5}
@@ -129,13 +132,19 @@ const TaskCard = props => {
               isChecked={item.completed}
               onChange={() => handleCompletedItem(item)}
               accessibilityLabel="checkbox"
+              
             />
-            <Text>{item.text}</Text>
+            <Text style={{
+              fontFamily:'Roboto-BoldItalic',
+              fontSize:17,
+             color:'gray'
+              }} >{item.text}</Text>
           </HStack>
           <IconButton
             rounded="full"
             variant="outline"
             size={8}
+            colorScheme={'pink'}
             justifyContent="center"
             alignItems="center"
             _icon={{size: '4'}}
@@ -143,7 +152,7 @@ const TaskCard = props => {
             onPress={() => handleDeleteTask(item.id)}
           />
         </HStack>
-      </Pressable>
+      </TouchableOpacity>
 
       <Modal
         isOpen={isVisibleModal}

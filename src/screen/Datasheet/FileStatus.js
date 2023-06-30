@@ -12,6 +12,8 @@ import {
 } from 'native-base';
 import {Picker} from '@react-native-picker/picker';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 const FileStatus = () => {
   const navigation = useNavigation();
 
@@ -22,22 +24,38 @@ const FileStatus = () => {
     {
       id: 1,
       name: 'Device 1 File',
+      icon:'file-o',
+      color: '#F44336',
     },
     {
       id: 2,
       name: 'Device 2 File',
+      icon:'file-o',
+      color: '#2196F3',
     },
     {
       id: 3,
       name: 'Device 3 File',
+      icon:'file-o',
+      color: '#FFEB3B',
     },
     {
       id: 4,
       name: 'Device 4 File',
+      icon:'file-o',
+      color: '#4CAF50',
     },
     {
       id: 5,
       name: 'Device 5 File',
+      icon:'file-o',
+      color: '#FF9800',
+    },
+    {
+      id: 6,
+      name: 'Device 5 File',
+      icon:'file-o',
+      color: '#b30086',
     },
   ];
 
@@ -151,19 +169,20 @@ const FileStatus = () => {
       return (
         <ScrollView w={['390', '500']} h="80">
           <Center w="100%">
-            <Box safeArea py="30" w="90%" maxW="300">
+            <Box safeArea py="12" w="90%" maxW="300">
               {' '}
-              {/* PUT PY = 40 TO MOVE EVERYTHING TO THE CENTER OF THE PAGE */}
               <Heading
-                size="2xl"
-                fontWeight="600"
-                alignSelf={'center'}
-                color="coolGray.800"
-                _dark={{
-                  color: 'warmGray.50',
-                }}>
-                FILE STATES
-              </Heading>
+              size="2xl"
+              fontWeight="light"
+              
+              fontFamily={'Roboto-BoldItalic'}
+              //color="coolGray.800"
+              _dark={{
+                color: 'warmGray.50',
+              }}>
+             FILE STATES
+            </Heading>
+             
               <View style={styles.container}>
                 <Picker
                   selectedValue={selectedName}
@@ -182,6 +201,12 @@ const FileStatus = () => {
                       key={file.id}
                       style={styles.fileItem}
                       onPress={() => handleFilePress(file.id)}>
+                       <Icon
+                name={file.icon}
+                size={25}
+                color={file.color}
+                
+              />
                       <Text style={styles.fileName}>{file.name}</Text>
                     </TouchableOpacity>
                   ))}
@@ -207,10 +232,10 @@ const FileStatus = () => {
 const styles = StyleSheet.create({
     fileItem: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     marginBottom: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 60,
     paddingVertical: 15,
     borderRadius: 5,
     backgroundColor: '#f2f2f2',
@@ -218,7 +243,6 @@ const styles = StyleSheet.create({
   },
   fileName: {
     fontSize: 16,
-   paddingHorizontal:90,
   },
 });
 export default FileStatus;

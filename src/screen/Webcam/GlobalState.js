@@ -5,14 +5,43 @@ export const GlobalContext = createContext({});
 export const GlobalCameras = props => {
   const [CamList, setCamList] = useState([]);
 
-  //-- THESE FIRST 3 ARE STATIC --//
+  //-- THESE FIRST 4 ARE STATIC --//
   const Cameras = [
-    {id: 1, name: 'Camera 1'},
-    {id: 2, name: 'Camera 2'},
-    {id: 3, name: 'Camera 3'},
+    {
+      id: 1,
+      name: 'Camera 1',
+      image: 'Cam.jpg',
+      link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      category: 'Bedroom',
+      icon:'video',
+    },
+    {
+      id: 2,
+      name: 'Camera 2',
+      image: 'Cam.jpg',
+      link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      category: 'Living room',
+      icon:'video',
+    },
+    {
+      id: 3,
+      name: 'Camera 3',
+      image: 'Cam.jpg',
+      link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      category: 'Bath room',
+      icon:'video',
+    },
+    {
+      id: 4,
+      name: 'Camera 4',
+      image: 'Cam.jpg',
+      link: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      category: 'Kitchen',
+      icon:'video',
+    },
   ];
 
-//-- USEFUL METHOD TO INITIALLY RENDER THE 3 DEFAULT CAMERAS --// 
+  //-- USEFUL METHOD TO INITIALLY RENDER THE 3 DEFAULT CAMERAS --//
   const firstRender = () => {
     setCamList(Cameras);
   };
@@ -40,7 +69,7 @@ export const GlobalCameras = props => {
     removeCam,
     updateCam,
   };
-  
+
   return (
     <GlobalContext.Provider value={contextValue}>
       {props.children}

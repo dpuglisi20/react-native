@@ -16,8 +16,8 @@ import {
   Switch,
 } from 'native-base';
 
-const DeviceGrid = props => {
-  const {devices, onPressDevice} = props;
+const DeviceGridCam = props => {
+  const {cam, onPressDevice} = props;
 
   const navigation = useNavigation();
 
@@ -50,30 +50,28 @@ const DeviceGrid = props => {
     }
   };
 
-  const renderDevice = ({item}) => {
+  const renderCam = ({item}) => {
     return (
       <VStack space={3} mt="10" style={styles.buttonRow}>
         <TouchableOpacity
           style={styles.buttonWrapper}
           onPress={() => handleDevicePress(item.id)}>
-          <Switch style={styles.switch} size="lg" />
           <Icon
             alignSelf="flex-start"
             paddingVertical={10}
             paddingHorizontal={20}
-            name={item.icon}
+            name={'stop'}
             size={35}
-            color={item.color}
+            color={'grey'}
           />
           <Text style={styles.deviceName}>{item.name}</Text>
-          <Text style={styles.deviceDescription}>{item.description}</Text>
         </TouchableOpacity>
       </VStack>
     );
   };
 
   return (
-    <FlatGrid itemDimension={120} data={devices} renderItem={renderDevice} />
+    <FlatGrid itemDimension={120} data={cam} renderItem={renderCam} />
   );
 };
 const styles = StyleSheet.create({
@@ -120,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DeviceGrid;
+export default DeviceGridCam;

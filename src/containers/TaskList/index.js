@@ -77,26 +77,27 @@ const TaskList = () => {
   return (
     <Center w="100%">
       <Box safeArea p="2" py="30" w="90%" maxW="300">
-        <Heading
-          size="2xl"
-          fontWeight="600"
-          color="coolGray.800"
-          alignSelf="center"
-          _dark={{
-            color: 'warmGray.50',
-          }}>
-          DAILY TASK
-        </Heading>
-        <Heading
-          mt="1"
-          _dark={{
-            color: 'warmGray.200',
-          }}
-          color="coolGray.600"
-          fontWeight="medium"
-          size="lg">
-          To do list:
-        </Heading>
+      <Heading
+              size="2xl"
+              fontWeight="light"
+              fontFamily={'Roboto-BoldItalic'}
+              alignSelf="center"
+              _dark={{
+                color: 'warmGray.50',
+              }}>
+              DAILY TASK
+            </Heading>
+            <Heading
+              mt="3"
+              _dark={{
+                color: 'warmGray.200',
+              }}
+              fontFamily={'Roboto-LightItalic'}
+              color="coolGray.600"
+              fontWeight="500"
+              size="lg">
+              To do list:
+            </Heading>
         <VStack space={3} mt="5">
           <IconButton
             colorScheme="indigo"
@@ -106,6 +107,7 @@ const TaskList = () => {
             icon={<AddIcon />}
             onPress={() => handleOpenModal()}
           />
+          
           <FlatList
             data={taskList}
             keyExtractor={item => item.id}

@@ -134,6 +134,7 @@ const SmartDeviceControl = () => {
       3: [deviceData[3]],
       4: [deviceData[4]],
     };
+    console.log(devicesByCategory[selectedCategory]);
     return devicesByCategory[selectedCategory] || [];
   };
 
@@ -142,7 +143,6 @@ const SmartDeviceControl = () => {
     {id: 2, name: 'Lights'},
     {id: 3, name: 'Speaker'},
     {id: 4, name: 'Smart TV'},
-   
   ];
 
   return (
@@ -192,7 +192,7 @@ const SmartDeviceControl = () => {
             />
 
             <Text style={{fontFamily: 'Roboto-Black', paddingHorizontal:55, fontSize:14, marginTop: -15}} >
-              Armed devices
+              Active devices
             </Text>
           </View>
           <View>

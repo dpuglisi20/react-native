@@ -52,7 +52,7 @@ const CameraData = ({route}) => {
                 </View>
                 <VideoPlayer
                   video={{uri: item.name}}
-                  autoplay={false}
+                  autoplay={true}
                   defaultMuted={true}
                   videoWidth={1500}
                   videoHeight={1000}

@@ -1,8 +1,10 @@
 import React, {useContext, useState} from 'react';
 import {GlobalContext} from './GlobalState';
-import {Text} from 'react-native';
+import {Text,TouchableOpacity} from 'react-native';
+import VideoPlayer from 'react-native-video-player';
+import {HStack,VStack, Pressable} from 'native-base';
 
-import {HStack, Pressable} from 'native-base';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const CameraDevices = props => {
   const {removeCam} = useContext(GlobalContext);
@@ -20,18 +22,34 @@ const CameraDevices = props => {
   };
 
   return (
-    <Pressable onPress={() => handleCameraPress(item)}>
+    <TouchableOpacity onPress={() => handleCameraPress(item)}>
       <HStack
         flexWrap={'wrap'}
-        py={5}
+        py={4}
         rounded="xl"
-        px={5}
+        px={4}
         bg={bgColor}
         mb={4}
         justifyContent="center"
-        alignItems="center">
-        <HStack space={2} alignItems="center" maxW={'100%'}>
-          <Text>{item.name}</Text>
+        alignItems="center"
+        >
+        <HStack space={'2xl'}  maxW={'100%'} style={{justifyContent:'space-around'}}>
+        <Icon
+            
+            name={item.icon}
+            size={30}
+            color={'grey'}
+          />
+        {/* <VideoPlayer
+                  video={{uri: item.link}}
+                  autoplay={false}
+                  defaultMuted={true}
+                  videoHeight={500}
+                  videoWidth={500}
+                 
+                  thumbnail={require('../../../assets/images/user.jpg')}
+                /> */}
+          <Text style={{fontFamily:'Roboto-BoldItalic', marginTop:2 ,fontSize:20}}>{item.name}</Text>
         </HStack>
 
         {/* TOGLIERE I COMMENTI PER RIMETTERE BOTTONE ELIMINA CAM MA POI GESTIRE LA VISUALIZZAZIONE 
@@ -48,7 +66,7 @@ const CameraDevices = props => {
           onPress={() => handleDeleteCam(item.id)}
         /> */}
       </HStack>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 
