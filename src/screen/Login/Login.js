@@ -92,7 +92,6 @@ const Login = () => {
         </Box>
       </Center>
 
-      
       <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
         <VStack space={1} mt="-32">
           <View style={{paddingHorizontal: 25}}>
@@ -125,7 +124,7 @@ const Login = () => {
                 style={{marginRight: 5}}
               />
               <TextInput
-              fontFamily={'Roboto-BoldItalic'}
+                fontFamily={'Roboto-BoldItalic'}
                 placeholder="Username"
                 style={{flex: 1, paddingVertical: 0}}></TextInput>
             </View>
@@ -145,13 +144,18 @@ const Login = () => {
                 style={{marginRight: 5}}
               />
               <TextInput
-               fontFamily={'Roboto-BoldItalic'}
+                fontFamily={'Roboto-BoldItalic'}
                 placeholder="Password"
                 style={{flex: 1, paddingVertical: 0}}
                 secureTextEntry={true}></TextInput>
 
               <TouchableOpacity onPress={onForgotPasswordPressed}>
-                <Text style={{color: '#AD40AF',  fontFamily:'Roboto-BoldItalic',fontWeight: '800'}}>
+                <Text
+                  style={{
+                    color: '#AD40AF',
+                    fontFamily: 'Roboto-BoldItalic',
+                    fontWeight: '800',
+                  }}>
                   Forgot?
                 </Text>
               </TouchableOpacity>

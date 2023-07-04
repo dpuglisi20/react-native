@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import CustomInput from '../../../components/CustomInput';
 import CustomButton from '../../../components/CustomButton/CustomButton';
 import {useNavigation} from '@react-navigation/native';
+import {Center, Heading, VStack, Box} from 'native-base';
 
 const NewPasswordScreen = () => {
   const [code, setCode] = useState('');
@@ -10,45 +17,63 @@ const NewPasswordScreen = () => {
   const navigation = useNavigation();
 
   const onSubmitPressed = () => {
-    console.warn('onSubmitPressed');
-    navigation.navigate('Menu');
-  };
-
-  const onSignInPress = () => {
-    navigation.navigate('SignIn');
+    console.log('The new password is: ', newPassword);
+    navigation.navigate('Login');
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
-        <Text style={styles.title}>Reset your password</Text>
+    <Center w="100%">
+      <Box p="2" py="20" w="90%" maxW="400">
+        <VStack space={1} mt="32">
+          <Heading
+            size="2xl"
+            fontWeight="light"
+            fontFamily={'Roboto-BoldItalic'}
+            marginBottom={30}
+            //color="coolGray.800"
+            _dark={{
+              color: 'warmGray.50',
+            }}>
+            Reset your password
+          </Heading>
 
-        <CustomInput placeholder="Code" value={code} setValue={setCode} />
+          <CustomInput placeholder="Code" value={code} setValue={setCode} />
 
-        <CustomInput
-          placeholder="Enter your new password"
-          value={newPassword}
-          setValue={setNewPassword}
-        />
+          <CustomInput
+            placeholder="Enter your new password"
+            value={newPassword}
+            setValue={setNewPassword}
+          />
 
-        <CustomButton text="Submit" onPress={onSubmitPressed} />
-
-        <CustomButton
-          text="Back to Sign in"
-          onPress={onSignInPress}
-          type="TERTIARY"
-        />
-      </View>
-    </ScrollView>
+          <TouchableOpacity
+            onPress={onSubmitPressed}
+            style={{
+              backgroundColor: '#AD40AF',
+              padding: 20,
+              width: '90%',
+              borderRadius: 10,
+              flexDirection: 'row',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              marginTop: 30,
+              marginBottom: 50,
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                color: '#fff',
+                fontFamily: 'Roboto-MediumItalic',
+              }}>
+              Submit
+            </Text>
+          </TouchableOpacity>
+        </VStack>
+      </Box>
+    </Center>
   );
 };
 
 const styles = StyleSheet.create({
-  root: {
-    alignItems: 'center',
-    padding: 20,
-  },
-
   title: {
     fontSize: 24,
     fontWeight: 'bold',

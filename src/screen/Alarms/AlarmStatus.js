@@ -15,7 +15,7 @@ const AlarmStatusPage = () => {
     {
       id: 1,
       name: 'Alarm 1',
-      status: 'Active',
+      status: 'Armed',
       description: 'My Home Therm',
       icon: 'alarm-light-outline',
       color: '#5593f6',
@@ -23,7 +23,7 @@ const AlarmStatusPage = () => {
     {
       id: 2,
       name: 'Alarm 2',
-      status: 'Idle',
+      status: 'Disarmed',
       description: 'My Home Therm',
       icon: 'alarm-light',
       color: '#F44336',

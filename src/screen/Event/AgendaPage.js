@@ -12,9 +12,9 @@ function AgendaPage() {
   return (
   
       <Agenda
-        selected="2022-12-01"
+        selected="2023-07-04"
         items={{
-          '2022-12-01': [{name: 'Cycling'}]
+          '2023-07-04': [{name: 'Cycling'}]
         }}
         renderItem={(item, isFirst) => (
           <TouchableOpacity style={styles.item}>

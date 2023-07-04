@@ -3,7 +3,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 
-import {Center, Heading, VStack, Button, Box, TextArea} from 'native-base';
+import {Center, Heading, VStack, Button, Box, TextArea, HStack} from 'native-base';
 
 const FeedbackForm = () => {
   const [rating, setRating] = useState(0);
@@ -25,15 +25,17 @@ const FeedbackForm = () => {
   return (
     <Center w="100%">
       <Box safeArea p="2" py="40" w="90%" maxW="300">
-        <Heading
-          size="2xl"
-          fontWeight="700"
-          color="coolGray.800"
-          _dark={{
-            color: 'warmGray.50',
-          }}>
-          YOUR FEEDBACK
-        </Heading>
+      <Heading
+              size="2xl"
+              fontWeight="light"
+              fontFamily={'Roboto-BoldItalic'}
+              //color="coolGray.800"
+              _dark={{
+                color: 'warmGray.50',
+              }}>
+               YOUR FEEDBACK
+            </Heading>
+       
         <View style={styles.starsContainer}>
           {[1, 2, 3, 4, 5].map(value => (
             <TouchableOpacity key={value} onPress={() => handleRating(value)}>
@@ -67,24 +69,79 @@ const FeedbackForm = () => {
             }}
           />
         </Box>
+        <HStack>
         <Heading
-          mt="4"
-          alignSelf="center"
-          _dark={{
-            color: 'warmGray.200',
-          }}
-          color="coolGray.600"
-          fontWeight="medium"
-          size="xs">
-          Your feedback with {rating} stars
-        </Heading>
+              mt="4"
+              alignSelf={'center'} 
+              _dark={{
+                color: 'warmGray.200',
+              }}
+              fontFamily={'BacasimeAntique-Regular'}
+              color="coolGray.600"
+              fontWeight="500"
+              size="lg">
+              Your feedback with 
+            </Heading>
+            <Heading
+             justifyContent={'center'}
+             marginTop={4}
+             marginLeft={3}
+             alignSelf={'center'} 
+              _dark={{
+                color: 'warmGray.200',
+              }}
+              fontFamily={'Roboto-BoldItalic'}
+              color="coolGray.600"
+              fontWeight="500"
+              size="lg">
+              {rating} 
+            </Heading>
+            <Heading
+              mt="4"
+              alignSelf={'center'} 
+              marginLeft={3}
+              _dark={{
+                color: 'warmGray.200',
+              }}
+              fontFamily={'BacasimeAntique-Regular'}
+              color="coolGray.600"
+              fontWeight="500"
+              size="lg">
+             stars
+            </Heading>
+            </HStack>
 
         <VStack space={30} mt="10">
-          <TouchableOpacity>
-            <Button onPress={() => handleSend()} mt="1" colorScheme="indigo">
-              Send Feedback
-            </Button>
-          </TouchableOpacity>
+       
+            <TouchableOpacity
+           onPress={() => handleSend()}
+              style={{
+                backgroundColor: '#AD40AF',
+                padding: 15,
+                width: '100%',
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginTop: -20,
+              }}>
+                <Icon
+              name="send"
+              color={'white'}
+              size={20}
+              style={{
+                width: '12%',
+              }}
+            />
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                  Send Feedback
+              </Text>
+            </TouchableOpacity>
+      
         </VStack>
       </Box>
     </Center>

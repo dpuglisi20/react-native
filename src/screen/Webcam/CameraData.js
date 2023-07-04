@@ -52,6 +52,8 @@ const CameraData = ({route}) => {
                 </View>
                 <VideoPlayer
                   video={{uri: item.name}}
+                 frameQuality={1080}
+                  
                   autoplay={true}
                   defaultMuted={true}
                   videoWidth={1500}
@@ -71,8 +73,9 @@ const CameraData = ({route}) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-BoldItalic',
+    fontSize: 33,
+    //fontWeight: 'bold',
     color: '#051C60',
     margin: 30,
   },

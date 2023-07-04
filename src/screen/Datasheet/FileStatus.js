@@ -24,37 +24,37 @@ const FileStatus = () => {
     {
       id: 1,
       name: 'Device 1 File',
-      icon:'file-o',
+      icon: 'file-o',
       color: '#F44336',
     },
     {
       id: 2,
       name: 'Device 2 File',
-      icon:'file-o',
+      icon: 'file-o',
       color: '#2196F3',
     },
     {
       id: 3,
       name: 'Device 3 File',
-      icon:'file-o',
+      icon: 'file-o',
       color: '#FFEB3B',
     },
     {
       id: 4,
       name: 'Device 4 File',
-      icon:'file-o',
+      icon: 'file-o',
       color: '#4CAF50',
     },
     {
       id: 5,
       name: 'Device 5 File',
-      icon:'file-o',
+      icon: 'file-o',
       color: '#FF9800',
     },
     {
       id: 6,
       name: 'Device 5 File',
-      icon:'file-o',
+      icon: 'file-o',
       color: '#b30086',
     },
   ];
@@ -65,13 +65,11 @@ const FileStatus = () => {
   };
 
   const filterFile = name => {
-    const filteredFiles = fileData.filter(
-      file => file.name === name,
-    );
+    const filteredFiles = fileData.filter(file => file.name === name);
     setFilteredData(filteredFiles);
   };
 
- /*  const onGoBackPressed = () => {
+  /*  const onGoBackPressed = () => {
     navigation.navigate('Menu');
   }; */
 
@@ -139,6 +137,7 @@ const FileStatus = () => {
                   key={file.id}
                   style={styles.fileItem}
                   onPress={() => handleFilePress(file.id)}>
+                     <Icon name={file.icon} size={25} color={file.color} />
                   <Text style={styles.fileName}>{file.name}</Text>
                 </TouchableOpacity>
               </VStack>
@@ -156,9 +155,7 @@ const FileStatus = () => {
       );
     } else {
       return (
-        <Text style={styles.noDataText}>
-         No data to display for this name
-        </Text>
+        <Text style={styles.noDataText}>No data to display for this name</Text>
       );
     }
   };
@@ -172,26 +169,24 @@ const FileStatus = () => {
             <Box safeArea py="12" w="90%" maxW="300">
               {' '}
               <Heading
-              size="2xl"
-              fontWeight="light"
-              
-              fontFamily={'Roboto-BoldItalic'}
-              //color="coolGray.800"
-              _dark={{
-                color: 'warmGray.50',
-              }}>
-             FILE STATES
-            </Heading>
-             
+                size="2xl"
+                fontWeight="light"
+                fontFamily={'Roboto-BoldItalic'}
+                //color="coolGray.800"
+                _dark={{
+                  color: 'warmGray.50',
+                }}>
+                FILE STATES
+              </Heading>
               <View style={styles.container}>
                 <Picker
                   selectedValue={selectedName}
                   onValueChange={itemValue => handleNameChange(itemValue)}
                   style={styles.picker}>
-                   <Picker.Item label="Select a name" value="" />
-                <Picker.Item label="Device 1" value="Device 1 File" />
-                <Picker.Item label="Device 2" value="Device 2 File" />
-                <Picker.Item label="Device 3" value="Device 3 File" />
+                  <Picker.Item label="Select a name" value="" />
+                  <Picker.Item label="Device 1" value="Device 1 File" />
+                  <Picker.Item label="Device 2" value="Device 2 File" />
+                  <Picker.Item label="Device 3" value="Device 3 File" />
                 </Picker>
               </View>
               <VStack space={4} mt="5">
@@ -201,12 +196,7 @@ const FileStatus = () => {
                       key={file.id}
                       style={styles.fileItem}
                       onPress={() => handleFilePress(file.id)}>
-                       <Icon
-                name={file.icon}
-                size={25}
-                color={file.color}
-                
-              />
+                      <Icon name={file.icon} size={25} color={file.color} />
                       <Text style={styles.fileName}>{file.name}</Text>
                     </TouchableOpacity>
                   ))}
@@ -230,7 +220,7 @@ const FileStatus = () => {
 };
 
 const styles = StyleSheet.create({
-    fileItem: {
+  fileItem: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',

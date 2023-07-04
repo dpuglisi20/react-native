@@ -31,7 +31,7 @@ const TaskCard = props => {
   const [task, setTask] = useState(initialState);
   const [textNote, setTextNote] = useState('');
   const [signature, setSignature] = useState('');
-  const [color, setColor] = useState('red');
+  const [color, setColor] = useState('#ff6666');
   const bgColor = colorMode === 'dark' ? 'primary.800' : 'white';
   const {item, handleTaskCardPressed} = props;
   const [buttonDisable, setButtonDisable] = useState(false);
@@ -39,9 +39,10 @@ const TaskCard = props => {
   useEffect(() => {
     if (textNote.length > 0 && signature.length > 0) {
       setButtonDisable(true);
-      setColor('indigo');
+      setColor('#4287f5');
     } else {
       setButtonDisable(false);
+      setColor('#ff6666');
     }
   }, [textNote, signature]);
 
@@ -160,27 +161,67 @@ const TaskCard = props => {
         size="lg">
         <Modal.Content maxWidth="400px">
           <Modal.CloseButton />
-          <Modal.Header>Are you sure you completed the task?</Modal.Header>
+          <Modal.Header  style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+               
+              }}>Did you complete the task?</Modal.Header>
           <Modal.Body>
             <FormControl>
               <FormControl.Label>Note</FormControl.Label>
               <Input value={textNote} onChangeText={handletextNote} />
 
               <FormControl.Label>Document</FormControl.Label>
-              <Button onPress={handleDocumentSelection}>Select</Button>
-
+              
+              <TouchableOpacity
+             onPress={handleDocumentSelection}
+              style={{
+                backgroundColor: '#AD40AF',
+                padding: 10,
+                width: '100%',
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+               
+              }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                Select
+              </Text>
+            </TouchableOpacity>
               <FormControl.Label>Signature</FormControl.Label>
               <Input value={signature} onChangeText={handleSignature} />
             </FormControl>
           </Modal.Body>
           <Modal.Footer>
-            <Button
-              colorScheme={color}
-              disabled={!buttonDisable}
-              flex={1}
-              onPress={() => handleDeleteTask(item.id)}>
-              Save
-            </Button>
+            
+            <TouchableOpacity
+            onPress={() => handleDeleteTask(item.id)}
+           
+            //color={color}
+            disabled={!buttonDisable}
+              style={{
+                backgroundColor:color,
+                padding: 15,
+                width: '100%',
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+               
+              }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                Completed
+              </Text>
+            </TouchableOpacity>
           </Modal.Footer>
         </Modal.Content>
       </Modal>

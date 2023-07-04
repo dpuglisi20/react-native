@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import {Center, Heading, VStack, Button, Box} from 'native-base';
 
@@ -38,17 +39,17 @@ const Feedback = () => {
   return (
     <>
       <Center w="100%">
-        <Box safeArea p="2" py="5">
-          <Heading
-            size="2xl"
-            mt="4"
-            fontWeight="700"
-            color="coolGray.800"
-            _dark={{
-              color: 'warmGray.50',
-            }}>
-            FEEDBACK
-          </Heading>
+        <Box safeArea p="2" py="12">
+        <Heading
+              size="2xl"
+              fontWeight="light"
+              fontFamily={'Roboto-BoldItalic'}
+              //color="coolGray.800"
+              _dark={{
+                color: 'warmGray.50',
+              }}>
+               FEEDBACK
+            </Heading>
         </Box>
       </Center>
       <View style={styles.container}>
@@ -73,33 +74,64 @@ const Feedback = () => {
       </View>
 
       <View style={styles.container2}>
-        <VStack space={3} mt="-10">
-          <TouchableOpacity>
-            <Button onPress={() => handleSend()} mt="1" colorScheme="indigo">
-              Send Feedback
-            </Button>
-          </TouchableOpacity>
+        <VStack space={3} mt="-3">
+         
+          <TouchableOpacity
+             onPress={() => handleSend()}
+              style={{
+                backgroundColor: '#AD40AF',
+                padding: 15,
+                width: '100%',
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                //marginBottom: -50,
+              }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                 Send Feedback
+              </Text>
+            </TouchableOpacity>
           <Heading
-            alignSelf={'center'}
-            safeArea
-            py="50"
-            size="xl"
+            alignSelf={'center'}   
+            marginTop={30} 
+            py="5"
+            size="2xl"
             fontWeight="700"
             color="coolGray.800"
             _dark={{
               color: 'warmGray.50',
             }}>
-            Oppure
+            Or
           </Heading>
-
-          <TouchableOpacity>
-            <Button
-              onPress={() => onPersonalFeedBackPressed()}
-              mt="-8"
-              colorScheme="indigo">
-              Write your Feedback
-            </Button>
-          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => onPersonalFeedBackPressed()}
+              style={{
+                backgroundColor: '#AD40AF',
+                padding: 15,
+                width: '100%',
+                borderRadius: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginTop: -20,
+              }}>
+                 <FontAwesome name="pencil" color={'white'} size={20}  style={{padding:2,
+                width: '12%',
+              }}/>
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: '#fff',
+                  fontFamily: 'Roboto-MediumItalic',
+                }}>
+                   Write your Feedback
+              </Text>
+            </TouchableOpacity>
+         
         </VStack>
       </View>
     </>
